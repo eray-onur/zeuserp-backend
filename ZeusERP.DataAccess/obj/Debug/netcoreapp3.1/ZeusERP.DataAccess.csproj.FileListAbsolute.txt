@@ -1,0 +1,17 @@
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.DataAccess.deps.json
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.DataAccess.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.DataAccess.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.Core.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.Entities.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.Entities.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.Core.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.csprojAssemblyReference.cache
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.AssemblyInfoInputs.cache
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.AssemblyInfo.cs
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.csproj.CopyComplete
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.DataAccess.runtimeconfig.json
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\bin\Debug\netcoreapp3.1\ZeusERP.DataAccess.runtimeconfig.dev.json
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.csproj.CoreCompileInputs.cache
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.DataAccess\obj\Debug\netcoreapp3.1\ZeusERP.DataAccess.genruntimeconfig.cache

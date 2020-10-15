@@ -1,0 +1,8 @@
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\bin\Debug\netcoreapp3.1\ZeusERP.Core.deps.json
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\bin\Debug\netcoreapp3.1\ZeusERP.Core.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\bin\Debug\netcoreapp3.1\ZeusERP.Core.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.AssemblyInfoInputs.cache
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.AssemblyInfo.cs
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.dll
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.pdb
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.csproj.CoreCompileInputs.cache
