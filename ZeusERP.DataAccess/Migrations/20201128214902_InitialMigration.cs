@@ -6,6 +6,25 @@ namespace ZeusERP.DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "t_contacts");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_categories");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_product_boms");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_product_boms_comps");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_products");
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+
             migrationBuilder.CreateTable(
                 name: "t_contacts",
                 columns: table => new
@@ -28,37 +47,6 @@ namespace ZeusERP.DataAccess.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "t_inv_boms",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    ProductId = table.Column<int>(nullable: false),
-                    BoMTypeId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<decimal>(nullable: false),
-                    ComponentsId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_t_inv_boms", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "t_inv_boms_comps",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    BoMId = table.Column<int>(nullable: false),
-                    ProductId = table.Column<int>(nullable: false),
-                    Quantity = table.Column<decimal>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_t_inv_boms_comps", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "t_inv_categories",
                 columns: table => new
                 {
@@ -71,6 +59,37 @@ namespace ZeusERP.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_t_inv_categories", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_inv_product_boms",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    ProductId = table.Column<int>(nullable: false),
+                    BoMTypeId = table.Column<int>(nullable: false),
+                    Quantity = table.Column<decimal>(nullable: false),
+                    ComponentsId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_inv_product_boms", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "t_inv_product_boms_comps",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    BoMId = table.Column<int>(nullable: false),
+                    ProductId = table.Column<int>(nullable: false),
+                    Quantity = table.Column<decimal>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_t_inv_product_boms_comps", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -87,30 +106,19 @@ namespace ZeusERP.DataAccess.Migrations
                     UnitCount = table.Column<decimal>(nullable: false),
                     UnitCost = table.Column<decimal>(nullable: false),
                     UnitPrice = table.Column<decimal>(nullable: false),
-                    BillOfMaterialsId = table.Column<int>(nullable: false)
+                    BillOfMaterialsId = table.Column<int>(nullable: false),
+                    CanBePurchased = table.Column<bool>(nullable: false),
+                    CanBeSold = table.Column<bool>(nullable: false),
+                    ResponsibleId = table.Column<int>(nullable: false),
+                    Weight = table.Column<decimal>(nullable: false),
+                    Volume = table.Column<decimal>(nullable: false),
+                    BoMId = table.Column<int>(nullable: false),
+                    ImgPath = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_t_inv_products", x => x.Id);
                 });
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-            migrationBuilder.DropTable(
-                name: "t_contacts");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_boms");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_boms_comps");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_categories");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_products");
         }
     }
 }

@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "EaVXDPrmRL14QKWRx86a1OoDL+DxnZNZw6mdxPZDK/H+z9uk+bsI8mHtbF+yZ7lKiTEqTfLgtGFXYR5QW4weAA==",
+  "dgSpecHash": "7nysOUZQVdUAQQ0cqqIfvznbxcYqoy1I40iqOkl6ALD4UyUie1BKC5CXCtT2qPqz+SoQzMmesYU2nFTUPd7MNw==",
   "success": true,
   "projectFilePath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.InventoryApi\\ZeusERP.InventoryApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eonur\\.nuget\\packages\\autofac\\6.0.0\\autofac.6.0.0.nupkg.sha512",
-    "C:\\Users\\eonur\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.0.2\\autofac.extensions.dependencyinjection.7.0.2.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\autofac.extensions.dependencyinjection\\7.1.0\\autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
     "C:\\Users\\eonur\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\eonur\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",
     "C:\\Users\\eonur\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",

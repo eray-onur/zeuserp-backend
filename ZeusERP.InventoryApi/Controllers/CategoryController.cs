@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +12,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors("CorsPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
@@ -20,7 +22,7 @@ namespace ZeusERP.InventoryApi.Controllers
         {
             _categoryService = categoryService;
         }
-        [HttpGet]
+        [HttpGet("GetAll")]
         public IActionResult Categories()
         {
             var result = _categoryService.GetList();
@@ -30,6 +32,7 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpGet("Get")]
         public IActionResult CategoryByName(string name)
         {
             var result = _categoryService.GetByName(name);
@@ -39,7 +42,7 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("add")]
+        [HttpPost("Add")]
         public IActionResult Add(Category category)
         {
             var result = _categoryService.Add(category);
@@ -49,7 +52,7 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("update")]
+        [HttpPost("Update")]
         public IActionResult Update(Category category)
         {
             var result = _categoryService.Update(category);
@@ -59,7 +62,7 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("delete")]
+        [HttpPost("Delete")]
         public IActionResult Delete(Category category)
         {
             var result = _categoryService.Delete(category);

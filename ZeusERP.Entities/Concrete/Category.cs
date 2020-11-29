@@ -14,9 +14,9 @@ namespace ZeusERP.Entities.Concrete
         [Key]
         public int Id { get; set; }
         [Required, MaxLength(75)]
-        public string CategoryName { get; set; }
+        public string Name { get; set; }
         [Required, MaxLength(200)]
-        public string CategoryDescription { get; set; }
+        public string Description { get; set; }
         public int SubcategoryId { get; set; }
     }
 }

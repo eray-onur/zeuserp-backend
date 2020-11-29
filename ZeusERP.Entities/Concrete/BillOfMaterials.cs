@@ -8,7 +8,7 @@ using ZeusERP.Core.Entities;
 
 namespace ZeusERP.Entities.Concrete
 {
-    [Table("t_inv_boms")]
+    [Table("t_inv_product_boms")]
     public class BillOfMaterials : IEntity
     {
         [Key]

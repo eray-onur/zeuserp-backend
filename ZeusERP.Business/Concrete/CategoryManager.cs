@@ -32,12 +32,12 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<Category> GetByName(string categoryName)
         {
-            return new SuccessDataResult<Category>(_categoryDao.Get(c => c.CategoryName == categoryName));
+            return new SuccessDataResult<Category>(_categoryDao.Get(c => c.Name == categoryName));
         }
 
         public async Task<IDataResult<Category>> GetByNameAsync(string categoryName)
         {
-            var category = await _categoryDao.GetAsync(c => c.CategoryName == categoryName);
+            var category = await _categoryDao.GetAsync(c => c.Name == categoryName);
             return new SuccessDataResult<Category>(category);
         }
 

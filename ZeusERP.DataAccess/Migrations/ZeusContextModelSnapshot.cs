@@ -39,7 +39,7 @@ namespace ZeusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("t_inv_boms");
+                    b.ToTable("t_inv_product_boms");
                 });
 
             modelBuilder.Entity("ZeusERP.Entities.Concrete.BillOfMaterialsComponent", b =>
@@ -60,7 +60,7 @@ namespace ZeusERP.DataAccess.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("t_inv_boms_comps");
+                    b.ToTable("t_inv_product_boms_comps");
                 });
 
             modelBuilder.Entity("ZeusERP.Entities.Concrete.Category", b =>
@@ -141,6 +141,15 @@ namespace ZeusERP.DataAccess.Migrations
                     b.Property<int>("BillOfMaterialsId")
                         .HasColumnType("int");
 
+                    b.Property<int>("BoMId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("CanBePurchased")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("CanBeSold")
+                        .HasColumnType("bit");
+
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
@@ -148,10 +157,16 @@ namespace ZeusERP.DataAccess.Migrations
                         .HasColumnType("nvarchar(255)")
                         .HasMaxLength(255);
 
+                    b.Property<string>("ImgPath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
+
+                    b.Property<int>("ResponsibleId")
+                        .HasColumnType("int");
 
                     b.Property<int>("Type")
                         .HasColumnType("int");
@@ -163,6 +178,12 @@ namespace ZeusERP.DataAccess.Migrations
                         .HasColumnType("decimal(18,2)");
 
                     b.Property<decimal>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Volume")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Weight")
                         .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");

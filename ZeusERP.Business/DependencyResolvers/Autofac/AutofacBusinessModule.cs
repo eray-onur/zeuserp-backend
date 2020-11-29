@@ -16,10 +16,10 @@ namespace ZeusERP.Business.DependencyResolvers.Autofac
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterType<ProductManager>().As<IProductService>();
             builder.RegisterType<EfProductDao>().As<IProductDao>();
-            builder.RegisterType<CategoryManager>().As<ICategoryService>();
+            builder.RegisterType<ProductManager>().As<IProductService>();
             builder.RegisterType<EfCategoryDao>().As<ICategoryDao>();
+            builder.RegisterType<CategoryManager>().As<ICategoryService>();
         }
     }
 }

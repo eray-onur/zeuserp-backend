@@ -26,5 +26,12 @@ namespace ZeusERP.Entities.Concrete
         public decimal UnitCost { get; set; }
         public decimal UnitPrice { get; set; }
         public int BillOfMaterialsId { get; set; }
+        public bool CanBePurchased { get; set; }
+        public bool CanBeSold { get; set; }
+        public int ResponsibleId { get; set; }
+        public decimal Weight { get; set; }
+        public decimal Volume { get; set; }
+        public int BoMId { get; set; }
+        public string ImgPath { get; set; }
     }
 }

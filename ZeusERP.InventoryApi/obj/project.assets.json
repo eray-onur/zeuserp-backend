@@ -14,7 +14,7 @@
           "lib/netstandard2.1/Autofac.dll": {}
         }
       },
-      "Autofac.Extensions.DependencyInjection/7.0.2": {
+      "Autofac.Extensions.DependencyInjection/7.1.0": {
         "type": "package",
         "dependencies": {
           "Autofac": "6.0.0",
@@ -1476,14 +1476,14 @@
         "lib/netstandard2.1/Autofac.xml"
       ]
     },
-    "Autofac.Extensions.DependencyInjection/7.0.2": {
-      "sha512": "fmgI7fW6YMoB9gEeGVCm3gJ3NEykFxdRj4goBzKL4CmIvHDCYtHLVNHxp5sdBkIrTugrcFOZl34jmOCG8l2eTA==",
+    "Autofac.Extensions.DependencyInjection/7.1.0": {
+      "sha512": "nm6rZREZ9tjdKXu9cmT69zHkZODagjCPlRRCOhiS1VqFFis9LQnMl18L4OYr8yfCW1WAQkFDD2CNaK/kF5Eqeg==",
       "type": "package",
-      "path": "autofac.extensions.dependencyinjection/7.0.2",
+      "path": "autofac.extensions.dependencyinjection/7.1.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
-        "autofac.extensions.dependencyinjection.7.0.2.nupkg.sha512",
+        "autofac.extensions.dependencyinjection.7.1.0.nupkg.sha512",
         "autofac.extensions.dependencyinjection.nuspec",
         "icon.png",
         "lib/netstandard2.0/Autofac.Extensions.DependencyInjection.dll",
@@ -5386,8 +5386,9 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v3.1": [
-      "Autofac.Extensions.DependencyInjection >= 7.0.2",
+      "Autofac.Extensions.DependencyInjection >= 7.1.0",
       "Microsoft.EntityFrameworkCore.Design >= 3.1.9",
+      "Microsoft.EntityFrameworkCore.SqlServer >= 3.1.9",
       "ZeusERP.Business >= 1.0.0"
     ]
   },
@@ -5397,7 +5398,7 @@
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
-    "version": "1.0.0",
+    "version": "0.0.1",
     "restore": {
       "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.InventoryApi\\ZeusERP.InventoryApi.csproj",
       "projectName": "ZeusERP.InventoryApi",
@@ -5423,6 +5424,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
             "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj": {
               "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj"
@@ -5438,14 +5440,19 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "dependencies": {
           "Autofac.Extensions.DependencyInjection": {
             "target": "Package",
-            "version": "[7.0.2, )"
+            "version": "[7.1.0, )"
           },
           "Microsoft.EntityFrameworkCore.Design": {
             "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
             "suppressParent": "All",
+            "target": "Package",
+            "version": "[3.1.9, )"
+          },
+          "Microsoft.EntityFrameworkCore.SqlServer": {
             "target": "Package",
             "version": "[3.1.9, )"
           }
@@ -5468,7 +5475,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.402\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Transactions;
 
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,7 +25,49 @@ namespace ZeusERP.InventoryApi.Controllers
             _productService = productService;
             _categoryService = categoryService;
         }
-        [HttpGet("GetAll")]
+        [HttpGet("Get/{id}")]
+        public IActionResult GetProductById(int id)
+        {
+            var result = _productService.GetById(id);
+            if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetDetails/{id}")]
+        public IActionResult GetProductDetailsById(int id)
+        {
+            var result = _productService.GetProductDetailsById(id);
+            if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetExtendedList")]
+        public IActionResult GetProductList()
+        {
+            var result = _productService.GetProductListItem();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("GetExtendedListAsync")]
+        public async Task<IActionResult> GetProductListAsync()
+        {
+            var result = await _productService.GetProductListItemAsync();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("GetList")]
         public IActionResult Products()
         {
             var result = _productService.GetList();
@@ -34,31 +77,11 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("GetAllAsync")]
+        [HttpGet("GetListAsync")]
         public async Task<IActionResult> ProductsAsync()
         {
             var result = await _productService.GetListAsync();
             if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetAllWithCategory")]
-        public IActionResult ProductsWithCategory()
-        {
-            var result = _productService.GetProductListWithCategory();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetWithCategories/{id}")]
-        public IActionResult ProductsByCategory(int categoryId)
-        {
-            var result = _productService.GetProductListByCategory(categoryId);
-            if(result.Success)
             {
                 return Ok(result.Data);
             }
@@ -101,8 +124,8 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 Category cat = new Category
                 {
-                    CategoryName = "Fixed Asset",
-                    CategoryDescription = "All assets that are used to product income belong to fixed assets.",
+                    Name = "Fixed Asset",
+                    Description = "All assets that are used to product income belong to fixed assets.",
                     SubcategoryId = -1
                 };
                 _categoryService.Add(cat);

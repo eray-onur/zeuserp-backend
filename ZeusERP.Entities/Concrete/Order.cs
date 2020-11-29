@@ -9,6 +9,7 @@ using ZeusERP.Entities.Concrete.Enums;
 
 namespace ZeusERP.Entities.Concrete
 {
+    [Table("t_inv_orders")]
     public class Order : IEntity
     {
         public int Id { get; set; }

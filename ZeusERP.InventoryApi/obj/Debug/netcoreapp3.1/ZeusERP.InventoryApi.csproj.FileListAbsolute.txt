@@ -1,6 +1,5 @@
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\appsettings.json
-C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\ZeusERP.InventoryApi.exe
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\ZeusERP.InventoryApi.deps.json
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\ZeusERP.InventoryApi.runtimeconfig.json
@@ -62,10 +61,11 @@ C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.AssemblyInfo.cs
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.csproj.CoreCompileInputs.cache
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.MvcApplicationPartsAssemblyInfo.cache
-C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.RazorTargetAssemblyInfo.cache
-C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.csproj.CopyComplete
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\staticwebassets\ZeusERP.InventoryApi.StaticWebAssets.Manifest.cache
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\staticwebassets\ZeusERP.InventoryApi.StaticWebAssets.xml
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\scopedcss\bundle\ZeusERP.InventoryApi.styles.css
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.RazorTargetAssemblyInfo.cache
+C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.csproj.CopyComplete
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.dll
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.pdb
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.genruntimeconfig.cache

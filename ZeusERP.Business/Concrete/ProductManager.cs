@@ -57,100 +57,77 @@ namespace ZeusERP.Business.Concrete
             var product = await _productDao.GetAsync(p => p.Id == productId);
             return new SuccessDataResult<Product>(product);
         }
-        /// <summary>
-        /// Returns a product that belongs to a category with given id.
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns></returns>
-        public IDataResult<ProductWithCategory> GetProductWithCategory(int productId)
+
+
+        public IDataResult<ProductDetailsDto> GetProductDetailsById(int productId)
         {
-            var product = _productDao.Get(p => p.Id == productId) as Product;
-            var category = _categoryDao.Get(c => c.Id == product.CategoryId) as Category;
-
-            var productWithCategory = new ProductWithCategory(product, category);
-
-            return new SuccessDataResult<ProductWithCategory>(productWithCategory);
-        }
-        /// <summary>
-        /// Returns a product that belongs to a category with given id asynchronously.
-        /// </summary>
-        /// <param name="productId"></param>
-        /// <returns>A product.</returns>
-        public async Task<IDataResult<ProductWithCategory>> GetProductWithCategoryAsync(int productId)
-        {
-            var product = await _productDao.GetAsync(p => p.CategoryId == productId) as Product;
-            var category = _categoryDao.Get(c => c.Id == product.CategoryId) as Category;
-
-            var productWithCategory = new ProductWithCategory(product, category);
-
-            return new SuccessDataResult<ProductWithCategory>(productWithCategory);
-        }
-        /// <summary>
-        /// Returns all product that belong to the given category id.
-        /// </summary>
-        /// <param name="categoryId">Category Id.</param>
-        /// <returns></returns>
-        public IDataResult<IList<ProductWithCategory>> GetProductListByCategory(int categoryId)
-        {
-            var category = _categoryDao.Get(c => c.Id == categoryId) as Category;
-            var products = _productDao.GetList(p => p.CategoryId == categoryId) as List<Product>;
-
-            var productsWithCategory = new List<ProductWithCategory>();
-            products.ForEach(p =>
+            var product = _productDao.Get(p => p.Id == productId);
+            var productCategory = _categoryDao.Get(c => c.Id == product.CategoryId);
+            var productDetailsDto = new ProductDetailsDto
             {
-                productsWithCategory.Add(new ProductWithCategory(p, category));
-            });
+                ProductId = product.Id,
+                ProductName = product.Name,
+                ProductDescription = product.Description,
+                CategoryId = productCategory.Id,
+                CategoryName = productCategory.Name,
+                ProductPrice = product.UnitPrice,
+                ProductCost = product.UnitCost,
+                ProductQuantity = product.UnitCount,
+            };
 
-            return new SuccessDataResult<IList<ProductWithCategory>>(productsWithCategory);
+            return new SuccessDataResult<ProductDetailsDto>(productDetailsDto);
         }
-        /// <summary>
-        /// Returns all products that belong to the given category id asynchronously.
-        /// </summary>
-        /// <param name="categoryId">Category Id.</param>
-        /// <returns></returns>
-        public async Task<IDataResult<IList<ProductWithCategory>>> GetProductListByCategoryAsync(int categoryId)
-        {
-            var category = await _categoryDao.GetAsync(c => c.Id == categoryId) as Category;
-            var products = await _productDao.GetListAsync(p => p.CategoryId == categoryId) as List<Product>;
 
-            var productsWithCategory = new List<ProductWithCategory>();
-            products.ForEach(p =>
+        public async Task<IDataResult<ProductDetailsDto>> GetProductDetailsByIdAsync(int productId)
+        {
+            var product = await _productDao.GetAsync(p => p.Id == productId);
+            var productCategory = await _categoryDao.GetAsync(c => c.Id == product.CategoryId);
+            var productDetailsDto = new ProductDetailsDto
             {
-                productsWithCategory.Add(new ProductWithCategory(p, category));
-            });
-            return new SuccessDataResult<IList<ProductWithCategory>>(productsWithCategory);
+                ProductId = product.Id,
+                ProductName = product.Name,
+                ProductDescription = product.Description,
+                CategoryId = productCategory.Id,
+                CategoryName = productCategory.Name,
+                ProductPrice = product.UnitPrice,
+                ProductCost = product.UnitCost,
+                ProductQuantity = product.UnitCount,
+            };
+
+            return new SuccessDataResult<ProductDetailsDto>(productDetailsDto);
+            
         }
-        /// <summary>
-        /// Returns all product that belong to the given category id as a complex type.
-        /// </summary>
-        /// <returns></returns>
-        public IDataResult<IList<ProductWithCategory>> GetProductListWithCategory()
+
+        public IDataResult<ProductListDto> GetProductListItem()
         {
-            var products = _productDao.GetList() as List<Product>;
-            var productsWithCategories = new List<ProductWithCategory>();
-            products.ForEach(p =>
-            {
-                var category = _categoryDao.Get(c => c.Id == p.CategoryId);
-                productsWithCategories.Add(new ProductWithCategory(p, category));
-            });
-            return new SuccessDataResult<IList<ProductWithCategory>>(productsWithCategories);
+            throw new NotImplementedException();
         }
-        /// <summary>
-        /// Returns all product that belong to the given category id as a complex type asynchronously.
-        /// </summary>
-        /// <returns></returns>
-        public async Task<IDataResult<IList<ProductWithCategory>>> GetProductListWithCategoryAsync()
+
+        
+        public async Task<IDataResult<ProductListDto>> GetProductListItemAsync()
         {
-            var products = await _productDao.GetListAsync() as List<Product>;
-            var productsWithCategories = new List<ProductWithCategory>();
+            var productListDto = new ProductListDto();
+            var productCategory = new Category();
 
-            products.ForEach(async p =>
+            IList<Product> products = await _productDao.GetListAsync();
+            foreach (Product p in products)
             {
-                var category = await _categoryDao.GetAsync(c => c.Id == p.CategoryId);
-                productsWithCategories.Add(new ProductWithCategory(p, category));
-            });
-
-            return new SuccessDataResult<IList<ProductWithCategory>>(productsWithCategories);
+                productCategory = await _categoryDao.GetAsync(c => c.Id == p.CategoryId);
+                productListDto.ProductList.Add(
+                    new ProductDetailsDto
+                    {
+                        ProductId = p.Id,
+                        ProductName = p.Name,
+                        ProductDescription = p.Description,
+                        CategoryId = productCategory.Id,
+                        CategoryName = productCategory.Name,
+                        ProductPrice = p.UnitPrice,
+                        ProductCost = p.UnitCost,
+                        ProductQuantity = p.UnitCount,
+                    }
+                );
+            }
+            return new SuccessDataResult<ProductListDto>(productListDto);
         }
 
         public IResult Add(Product product)

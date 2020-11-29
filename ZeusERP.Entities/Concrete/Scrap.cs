@@ -10,7 +10,7 @@ using ZeusERP.Entities.Concrete.Enums;
 namespace ZeusERP.Entities.Concrete
 {
     [Table("t_inv_orders_scrap")]
-    public class ScrapOrder : IEntity
+    public class Scrap : IEntity
     {
         [Key]
         public int Id { get; set; }
@@ -20,6 +20,8 @@ namespace ZeusERP.Entities.Concrete
         public decimal Quantity { get; set; }
         public DateTime ScheduledDate { get; set; }
         public DateTime CompletedDate { get; set; }
+        public int SourceLocationId { get; set; }
+        public int ScrapLocationId { get; set; }
         public ScrapStatus Status { get; set; }
     }
 }
