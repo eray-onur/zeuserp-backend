@@ -6,25 +6,6 @@ namespace ZeusERP.DataAccess.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropTable(
-                name: "t_contacts");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_categories");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_product_boms");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_product_boms_comps");
-
-            migrationBuilder.DropTable(
-                name: "t_inv_products");
-        }
-
-        protected override void Down(MigrationBuilder migrationBuilder)
-        {
-
             migrationBuilder.CreateTable(
                 name: "t_contacts",
                 columns: table => new
@@ -52,9 +33,9 @@ namespace ZeusERP.DataAccess.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CategoryName = table.Column<string>(maxLength: 75, nullable: false),
-                    CategoryDescription = table.Column<string>(maxLength: 200, nullable: false),
-                    SubcategoryId = table.Column<int>(nullable: false)
+                    Name = table.Column<string>(maxLength: 75, nullable: false),
+                    Description = table.Column<string>(maxLength: 200, nullable: false),
+                    SubcategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -70,7 +51,7 @@ namespace ZeusERP.DataAccess.Migrations
                     ProductId = table.Column<int>(nullable: false),
                     BoMTypeId = table.Column<int>(nullable: false),
                     Quantity = table.Column<decimal>(nullable: false),
-                    ComponentsId = table.Column<int>(nullable: false)
+                    ComponentsId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -119,6 +100,24 @@ namespace ZeusERP.DataAccess.Migrations
                 {
                     table.PrimaryKey("PK_t_inv_products", x => x.Id);
                 });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "t_contacts");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_categories");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_product_boms");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_product_boms_comps");
+
+            migrationBuilder.DropTable(
+                name: "t_inv_products");
         }
     }
 }

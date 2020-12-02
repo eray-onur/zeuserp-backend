@@ -6,12 +6,12 @@ using ZeusERP.Core.Entities;
 
 namespace ZeusERP.Entities.Concrete.ComplexTypes
 {
-    public class LocationRowDto : IDto
+    public class WarehouseListDto : IDto
     {
+        public int WarehouseId { get; set; }
+        public string WarehouseCode { get; set; }
+        public string WarehouseName { get; set; }
         public int LocationId { get; set; }
-        public string LocationCode { get; set; }
         public string LocationName { get; set; }
-        public string AddressTitle { get; set; }
-        public string AddressDescription { get; set; }
     }
 }

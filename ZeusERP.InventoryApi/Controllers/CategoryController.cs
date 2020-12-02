@@ -12,7 +12,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
-    [EnableCors("CorsPolicy")]
+    [EnableCors()]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoryController : ControllerBase
@@ -32,11 +32,51 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("Get")]
-        public IActionResult CategoryByName(string name)
+        [HttpGet("GetAllAsync")]
+        public async Task<IActionResult> CategoriesAsync()
         {
-            var result = _categoryService.GetByName(name);
+            var result = await _categoryService.GetListAsync();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("Get/{id}")]
+        public async Task<IActionResult> CategoryById(int id)
+        {
+            var result = await _categoryService.GetByIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("Get/{name}")]
+        public async Task<IActionResult> CategoryByName(string name)
+        {
+            var result = await  _categoryService.GetByNameAsync(name);
             if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetDetailsAsync/{id}")]
+        public async Task<IActionResult> CategoryDetailsDtoById(int id)
+        {
+            var result = await _categoryService.GetByIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetListAsync/{id}")]
+        public async Task<IActionResult> CategoryListDto()
+        {
+            var result = await _categoryService.GetListAsync();
+            if (result.Success)
             {
                 return Ok(result.Data);
             }

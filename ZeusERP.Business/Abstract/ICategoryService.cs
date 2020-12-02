@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using ZeusERP.Core.Utilities.Results;
 using ZeusERP.Entities.Concrete;
+using ZeusERP.Entities.Concrete.ComplexTypes;
 
 namespace ZeusERP.Business.Abstract
 {
@@ -14,6 +15,10 @@ namespace ZeusERP.Business.Abstract
         Task<IDataResult<Category>> GetByIdAsync(int categoryId);
         IDataResult<Category> GetByName(string categoryName);
         Task<IDataResult<Category>> GetByNameAsync(string categoryName);
+        IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId);
+        Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId);
+        IDataResult<CategoryListDto> GetCategoryList();
+        Task<IDataResult<CategoryListDto>> GetCategoryListAsync();
         IDataResult<IList<Category>> GetList();
         Task<IDataResult<IList<Category>>> GetListAsync();
         IResult Add(Category category);

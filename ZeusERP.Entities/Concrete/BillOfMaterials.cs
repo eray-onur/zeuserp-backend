@@ -16,6 +16,6 @@ namespace ZeusERP.Entities.Concrete
         public int ProductId { get; set; }
         public int BoMTypeId { get; set; }
         public decimal Quantity { get; set; }
-        public int ComponentsId { get; set; }
+        public int? ComponentsId { get; set; }
     }
 }

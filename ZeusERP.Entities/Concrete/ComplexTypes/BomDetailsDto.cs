@@ -6,8 +6,7 @@ using ZeusERP.Core.Entities;
 
 namespace ZeusERP.Entities.Concrete.ComplexTypes
 {
-    public class AddressDetailsDto : IDto
+    public class BomDetailsDto : IDto
     {
-
     }
 }

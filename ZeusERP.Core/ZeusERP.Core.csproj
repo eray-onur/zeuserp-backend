@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <Folder Include="CrossCuttingConcerns\Logging\" />
+    <Folder Include="CrossCuttingConcerns\Caching\" />
     <Folder Include="Utilities\Formatting\" />
   </ItemGroup>
 

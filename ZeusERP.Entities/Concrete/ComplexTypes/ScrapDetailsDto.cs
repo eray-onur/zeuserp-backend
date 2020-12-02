@@ -7,7 +7,7 @@ using ZeusERP.Entities.Concrete.Enums;
 
 namespace ZeusERP.Entities.Concrete.ComplexTypes
 {
-    public class ScrapOrderDto : IDto
+    public class ScrapDetailsDto : IDto
     {
         public int ScrapId { get; set; }
         public string OrderCode { get; set; }

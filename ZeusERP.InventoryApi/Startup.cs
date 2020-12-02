@@ -32,9 +32,10 @@ namespace ZeusERP.InventoryApi
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(options => options.AddDefaultPolicy(
-                    builder => builder.AllowAnyOrigin()
-                )
+            services.AddCors(
+                //options => options.AddDefaultPolicy(
+                //    builder => builder.AllowAnyOrigin()
+                //)
             );
             services.AddControllers();
             services.AddScoped<IProductService, ProductManager>();
@@ -56,7 +57,12 @@ namespace ZeusERP.InventoryApi
 
             app.UseRouting();
 
-            app.UseCors();
+            app.UseCors(
+                x => x
+                .AllowAnyMethod()
+                .AllowAnyHeader()
+                .WithOrigins("http://localhost:4200")
+            );
 
             app.UseAuthorization();
 

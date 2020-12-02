@@ -8,15 +8,18 @@ using ZeusERP.Business.Constants;
 using ZeusERP.Core.Utilities.Results;
 using ZeusERP.DataAccess.Abstract;
 using ZeusERP.Entities.Concrete;
+using ZeusERP.Entities.Concrete.ComplexTypes;
 
 namespace ZeusERP.Business.Concrete
 {
     public class CategoryManager : ICategoryService
     {
         private ICategoryDao _categoryDao;
-        public CategoryManager(ICategoryDao categoryDao)
+        private IProductDao _productDao;
+        public CategoryManager(ICategoryDao categoryDao, IProductDao productDao)
         {
             _categoryDao = categoryDao;
+            _productDao = productDao;
         }
 
         public IDataResult<Category> GetById(int categoryId)
@@ -39,6 +42,22 @@ namespace ZeusERP.Business.Concrete
         {
             var category = await _categoryDao.GetAsync(c => c.Name == categoryName);
             return new SuccessDataResult<Category>(category);
+        }
+
+        public IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId)
+        {
+            var category = _categoryDao.Get(c => c.Id == categoryId);
+            var subcategory = _categoryDao.Get(c => c.SubcategoryId == category.Id);
+
+            var categoryDetailsDto = new CategoryDetailsDto
+            {
+                CategoryId = category.Id,
+                CategoryName = category.Name,
+                CategoryDescription = category.Description,
+                SubcategoryId = subcategory.Id,
+                SubcategoryName = subcategory.Name,
+            };
+            return new SuccessDataResult<CategoryDetailsDto>(categoryDetailsDto);
         }
 
         public IDataResult<IList<Category>> GetList()
@@ -85,6 +104,32 @@ namespace ZeusERP.Business.Concrete
         {
             await _categoryDao.DeleteAsync(category);
             return new SuccessResult(true, ResultMessages.CategoryDeleted);
+        }
+
+        public async Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId)
+        {
+            var category = await _categoryDao.GetAsync(c => c.Id == categoryId);
+            var subcategory = await _categoryDao.GetAsync(c => c.SubcategoryId == category.Id);
+
+            var categoryDetailsDto = new CategoryDetailsDto
+            {
+                CategoryId = category.Id,
+                CategoryName = category.Name,
+                CategoryDescription = category.Description,
+                SubcategoryId = subcategory.Id,
+                SubcategoryName = subcategory.Name,
+            };
+            return new SuccessDataResult<CategoryDetailsDto>(categoryDetailsDto);
+        }
+
+        public IDataResult<CategoryListDto> GetCategoryList()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IDataResult<CategoryListDto>> GetCategoryListAsync()
+        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -98,23 +98,17 @@ namespace ZeusERP.Business.Concrete
             
         }
 
-        public IDataResult<ProductListDto> GetProductListItem()
+        public IDataResult<IList<ProductListDto>> GetProductListItems()
         {
-            throw new NotImplementedException();
-        }
-
-        
-        public async Task<IDataResult<ProductListDto>> GetProductListItemAsync()
-        {
-            var productListDto = new ProductListDto();
+            var productListDtos = new List<ProductListDto>();
             var productCategory = new Category();
 
-            IList<Product> products = await _productDao.GetListAsync();
+            IList<Product> products =  _productDao.GetList();
             foreach (Product p in products)
             {
-                productCategory = await _categoryDao.GetAsync(c => c.Id == p.CategoryId);
-                productListDto.ProductList.Add(
-                    new ProductDetailsDto
+                productCategory = _categoryDao.Get(c => c.Id == p.CategoryId);
+                productListDtos.Add(
+                    new ProductListDto
                     {
                         ProductId = p.Id,
                         ProductName = p.Name,
@@ -127,7 +121,34 @@ namespace ZeusERP.Business.Concrete
                     }
                 );
             }
-            return new SuccessDataResult<ProductListDto>(productListDto);
+            return new SuccessDataResult<IList<ProductListDto>>(productListDtos);
+        }
+
+        
+        public async Task<IDataResult<IList<ProductListDto>>> GetProductListItemsAsync()
+        {
+            var productListDtos = new List<ProductListDto>();
+            var productCategory = new Category();
+
+            IList<Product> products = await _productDao.GetListAsync();
+            foreach (Product p in products)
+            {
+                productCategory = await _categoryDao.GetAsync(c => c.Id == p.CategoryId);
+                productListDtos.Add(
+                    new ProductListDto
+                    {
+                        ProductId = p.Id,
+                        ProductName = p.Name,
+                        ProductDescription = p.Description,
+                        CategoryId = productCategory.Id,
+                        CategoryName = productCategory.Name,
+                        ProductPrice = p.UnitPrice,
+                        ProductCost = p.UnitCost,
+                        ProductQuantity = p.UnitCount,
+                    }
+                );
+            }
+            return new SuccessDataResult<IList<ProductListDto>>(productListDtos);
         }
 
         public IResult Add(Product product)

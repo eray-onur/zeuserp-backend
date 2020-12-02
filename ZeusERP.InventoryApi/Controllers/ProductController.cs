@@ -13,6 +13,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors()]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -45,10 +46,20 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("GetExtendedList")]
+        [HttpGet("GetDetailsAsync/{id}")]
+        public async Task<IActionResult> GetProductDetailsByIdAsync(int id)
+        {
+            var result = await _productService.GetProductDetailsByIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetList")]
         public IActionResult GetProductList()
         {
-            var result = _productService.GetProductListItem();
+            var result = _productService.GetProductListItems();
             if (result.Success)
             {
                 return Ok(result.Data);
@@ -56,10 +67,10 @@ namespace ZeusERP.InventoryApi.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("GetExtendedListAsync")]
+        [HttpGet("GetListAsync")]
         public async Task<IActionResult> GetProductListAsync()
         {
-            var result = await _productService.GetProductListItemAsync();
+            var result = await _productService.GetProductListItemsAsync();
             if (result.Success)
             {
                 return Ok(result.Data);
@@ -67,7 +78,7 @@ namespace ZeusERP.InventoryApi.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("GetList")]
+        [HttpGet("GetAll")]
         public IActionResult Products()
         {
             var result = _productService.GetList();
@@ -77,7 +88,7 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpGet("GetListAsync")]
+        [HttpGet("GetAllAsync")]
         public async Task<IActionResult> ProductsAsync()
         {
             var result = await _productService.GetListAsync();
@@ -107,16 +118,18 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpPost("Delete")]
-        public IActionResult Delete(Product product)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _productService.Delete(product);
+            var productToDelete = _productService.GetById(id);
+            var result = _productService.Delete(productToDelete.Data);
             if (result.Success)
             {
                 return Ok(result.Message);
             }
             return BadRequest(result.Message);
         }
+
         [HttpPost("CreateBoth")]
         public IActionResult CreateBoth()
         {
@@ -126,7 +139,6 @@ namespace ZeusERP.InventoryApi.Controllers
                 {
                     Name = "Fixed Asset",
                     Description = "All assets that are used to product income belong to fixed assets.",
-                    SubcategoryId = -1
                 };
                 _categoryService.Add(cat);
                 Product prod = new Product

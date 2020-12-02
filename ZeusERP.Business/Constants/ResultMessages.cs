@@ -14,5 +14,9 @@ namespace ZeusERP.Business.Constants
         public static string CategoryDeleted = "Kategori başarıyla silindi.";
         public static string CategoryUpdated = "Kategori başarıyla güncellendi.";
 
+        public static string BomAdded = "BOM başarıyla eklendi.";
+        public static string BomDeleted = "BOM başarıyla silindi.";
+        public static string BomUpdated = "BOM başarıyla güncellendi.";
+
     }
 }

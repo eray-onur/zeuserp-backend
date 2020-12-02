@@ -9,6 +9,7 @@
     <Description>This is an enterprise resource planning software.</Description>
     <NeutralLanguage>en-US</NeutralLanguage>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <StartupObject>ZeusERP.InventoryApi.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>

@@ -10,7 +10,7 @@ using ZeusERP.Entities.Concrete.Enums;
 namespace ZeusERP.Entities.Concrete
 {
     [Table("t_inv_orders_receipts")]
-    public class ReceiptOrder : IEntity
+    public class Receipt : IEntity
     {
         public int Id { get; set; }
         public int ReceiveFromId { get; set; }

@@ -8,7 +8,7 @@ using ZeusERP.Core.Entities;
 namespace ZeusERP.Entities.Concrete
 {
     [Table("t_inv_orders_deliveries")]
-    public class OrderDelivery : IEntity
+    public class Delivery : IEntity
     {
         public int Id { get; set; }
         public int DeliveryAddressId { get; set; }

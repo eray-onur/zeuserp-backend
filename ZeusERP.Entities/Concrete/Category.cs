@@ -17,6 +17,6 @@ namespace ZeusERP.Entities.Concrete
         public string Name { get; set; }
         [Required, MaxLength(200)]
         public string Description { get; set; }
-        public int SubcategoryId { get; set; }
+        public int? SubcategoryId { get; set; }
     }
 }

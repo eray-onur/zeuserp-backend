@@ -1,10 +1,14 @@
-﻿{
+{
   "iisSettings": {
-    "windowsAuthentication": false, 
-    "anonymousAuthentication": true, 
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://localhost/ZeusERP.InventoryApi",
+      "sslPort": 0
+    },
     "iisExpress": {
-      "applicationUrl": "http://localhost:52128",
-      "sslPort": 44367
+      "applicationUrl": "http://localhost:52130",
+      "sslPort": 44345
     }
   },
   "profiles": {
@@ -16,12 +20,13 @@
       }
     },
     "ZeusERP.InventoryApi": {
-      "commandName": "Project",
+      "commandName": "IISExpress",
       "launchBrowser": true,
-      "applicationUrl": "https://192.168.1.88:5001;http://192.168.1.88:5000",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "nativeDebugging": false,
+      "applicationUrl": "https://192.168.1.88:5001;http://192.168.1.88:5000"
     }
   }
 }
