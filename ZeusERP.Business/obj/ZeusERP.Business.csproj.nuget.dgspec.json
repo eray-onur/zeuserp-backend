@@ -1,26 +1,21 @@
 {
   "format": 1,
   "restore": {
-    "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj": {}
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj": {}
   },
   "projects": {
-    "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj": {
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj",
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj",
         "projectName": "ZeusERP.Business",
-        "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\ZeusERP.Business.csproj",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj",
         "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Business\\obj\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -33,11 +28,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
-                "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj"
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj"
               },
-              "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
-                "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
               }
             }
           }
@@ -76,23 +71,18 @@
         }
       }
     },
-    "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj",
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
         "projectName": "ZeusERP.Core",
-        "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
         "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\obj\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -145,23 +135,18 @@
         }
       }
     },
-    "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
         "projectName": "ZeusERP.DataAccess",
-        "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
         "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.DataAccess\\obj\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -174,11 +159,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj": {
-                "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj"
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj"
               },
-              "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
-                "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
               }
             }
           }
@@ -227,23 +212,18 @@
         }
       }
     },
-    "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
         "projectName": "ZeusERP.Entities",
-        "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
         "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-        "outputPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Entities\\obj\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
           "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "netcoreapp3.1"
@@ -256,8 +236,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj": {
-                "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj"
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj"
               }
             }
           }

@@ -678,27 +678,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\eonur\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\eonur\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj",
+      "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
       "projectName": "ZeusERP.Core",
-      "projectPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj",
+      "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
       "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-      "outputPath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\obj\\",
+      "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
         "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp3.1"

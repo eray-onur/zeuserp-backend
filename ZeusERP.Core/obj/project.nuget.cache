@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ca4BDJM9K3FRNZD24iVc6uYZmwN1R4SnAOPb1STIufe7a/BGqWAJDcS1R125JUc1wFBnLnppJv3Wt2OnDWN4GQ==",
+  "dgSpecHash": "4Xwq8YUZKmGWBbl6I0+6dXUQ6Dp4L+6EqDuFqCeX80EOR+0unJXYv+qOyRjBTV4qa3gFumhGIdhN4oio+aqVCA==",
   "success": true,
-  "projectFilePath": "C:\\projects\\ZeusERP\\SourceCode\\ZeusERP\\ZeusERP.Core\\ZeusERP.Core.csproj",
+  "projectFilePath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\eonur\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\1.1.1\\microsoft.bcl.asyncinterfaces.1.1.1.nupkg.sha512",
     "C:\\Users\\eonur\\.nuget\\packages\\microsoft.bcl.hashcode\\1.1.0\\microsoft.bcl.hashcode.1.1.0.nupkg.sha512",

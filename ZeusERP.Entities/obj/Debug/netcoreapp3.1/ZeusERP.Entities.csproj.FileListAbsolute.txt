@@ -10,3 +10,15 @@ C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Entities\obj\Debug\netcoreapp3.1\
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.csproj.CopyComplete
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.dll
 C:\projects\ZeusERP\SourceCode\ZeusERP\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.pdb
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\bin\Debug\netcoreapp3.1\ZeusERP.Entities.deps.json
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\bin\Debug\netcoreapp3.1\ZeusERP.Entities.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\bin\Debug\netcoreapp3.1\ZeusERP.Entities.pdb
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\bin\Debug\netcoreapp3.1\ZeusERP.Core.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\bin\Debug\netcoreapp3.1\ZeusERP.Core.pdb
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.csprojAssemblyReference.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.AssemblyInfoInputs.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.AssemblyInfo.cs
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.csproj.CoreCompileInputs.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.csproj.CopyComplete
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Entities\obj\Debug\netcoreapp3.1\ZeusERP.Entities.pdb
