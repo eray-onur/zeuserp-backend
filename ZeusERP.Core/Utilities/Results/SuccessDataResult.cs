@@ -6,7 +6,7 @@ namespace ZeusERP.Core.Utilities.Results
 {
     public class SuccessDataResult<T> : DataResult<T>
     {
-        public SuccessDataResult() : base(default, true)
+        public SuccessDataResult(bool result) : base(default, true)
         {
 
         }

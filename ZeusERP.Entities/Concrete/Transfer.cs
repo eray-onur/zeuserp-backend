@@ -1,10 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
+
+using ZeusERP.Core.Entities;
 
 namespace ZeusERP.Entities.Concrete
 {
-    public class Transfer
+    [Table("t_inv_orders_transfer")]
+    public class Transfer : IEntity
     {
         public int Id { get; set; }
         public int ReceiveFromId { get; set; }

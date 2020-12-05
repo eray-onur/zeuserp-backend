@@ -15,10 +15,10 @@ namespace ZeusERP.InventoryApi.Controllers
     [EnableCors()]
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoryController : ControllerBase
+    public class CategoriesController : ControllerBase
     {
         private ICategoryService _categoryService;
-        public CategoryController(ICategoryService categoryService)
+        public CategoriesController(ICategoryService categoryService)
         {
             _categoryService = categoryService;
         }
@@ -73,7 +73,7 @@ namespace ZeusERP.InventoryApi.Controllers
             return BadRequest(result.Message);
         }
         [HttpGet("GetListAsync/{id}")]
-        public async Task<IActionResult> CategoryListDto()
+        public async Task<IActionResult> CategoryListDtoAsync()
         {
             var result = await _categoryService.GetListAsync();
             if (result.Success)
@@ -92,6 +92,16 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpPost("AddAsync")]
+        public async Task<IActionResult> AddAsync(Category category)
+        {
+            var result = await _categoryService.AddAsync(category);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
         [HttpPost("Update")]
         public IActionResult Update(Category category)
         {
@@ -102,10 +112,31 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpPost("UpdateAsync")]
+        public async Task<IActionResult> UpdateAsync(Category category)
+        {
+            var result = await _categoryService.UpdateAsync(category);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
         [HttpPost("Delete")]
         public IActionResult Delete(Category category)
         {
             var result = _categoryService.Delete(category);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpDelete("DeleteAsync")]
+        public async Task<IActionResult> DeleteAsync(Category category)
+        {
+            var result = await _categoryService.DeleteAsync(category);
             if (result.Success)
             {
                 return Ok(result.Message);

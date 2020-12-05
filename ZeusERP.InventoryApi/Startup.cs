@@ -38,10 +38,6 @@ namespace ZeusERP.InventoryApi
                 //)
             );
             services.AddControllers();
-            services.AddScoped<IProductService, ProductManager>();
-            services.AddScoped<IProductDao, EfProductDao>();
-            services.AddScoped<ICategoryDao, EfCategoryDao>();
-            services.AddScoped<ICategoryService, CategoryManager>();
             services.AddDbContext<ZeusContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SaffetDB")));
 
             var x = Configuration.GetConnectionString("SaffetDB");
@@ -61,7 +57,7 @@ namespace ZeusERP.InventoryApi
                 x => x
                 .AllowAnyMethod()
                 .AllowAnyHeader()
-                .WithOrigins("http://localhost:4200")
+                .AllowAnyOrigin()
             );
 
             app.UseAuthorization();

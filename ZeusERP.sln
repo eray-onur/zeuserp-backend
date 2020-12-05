@@ -11,9 +11,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusERP.DataAccess", "ZeusE
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusERP.Business", "ZeusERP.Business\ZeusERP.Business.csproj", "{3F21E9F7-E48C-42C5-B8AC-603AA65A26AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusERP.TestConsole", "ZeusERP.TestConsole\ZeusERP.TestConsole.csproj", "{76EEC8B8-0564-40EF-B5C0-45AB7E635CBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusERP.TestConsole", "ZeusERP.TestConsole\ZeusERP.TestConsole.csproj", "{76EEC8B8-0564-40EF-B5C0-45AB7E635CBB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusERP.InventoryApi", "ZeusERP.InventoryApi\ZeusERP.InventoryApi.csproj", "{BBD00C4A-0B35-4EB5-9DF2-90344D2599CD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ZeusERP.InventoryApi", "ZeusERP.InventoryApi\ZeusERP.InventoryApi.csproj", "{BBD00C4A-0B35-4EB5-9DF2-90344D2599CD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZeusERP.ManufacturingApi", "ZeusERP.ManufacturingApi\ZeusERP.ManufacturingApi.csproj", "{EA51CB14-53F2-4C6D-8403-A51843AD296F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{BBD00C4A-0B35-4EB5-9DF2-90344D2599CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBD00C4A-0B35-4EB5-9DF2-90344D2599CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBD00C4A-0B35-4EB5-9DF2-90344D2599CD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA51CB14-53F2-4C6D-8403-A51843AD296F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA51CB14-53F2-4C6D-8403-A51843AD296F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA51CB14-53F2-4C6D-8403-A51843AD296F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA51CB14-53F2-4C6D-8403-A51843AD296F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,14 +11,10 @@ namespace ZeusERP.Business.Abstract
 {
     public interface ICategoryService
     {
-        IDataResult<Category> GetById(int categoryId);
-        Task<IDataResult<Category>> GetByIdAsync(int categoryId);
-        IDataResult<Category> GetByName(string categoryName);
-        Task<IDataResult<Category>> GetByNameAsync(string categoryName);
-        IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId);
-        Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId);
-        IDataResult<CategoryListDto> GetCategoryList();
-        Task<IDataResult<CategoryListDto>> GetCategoryListAsync();
+        IDataResult<Category> GetById(int Id);
+        Task<IDataResult<Category>> GetByIdAsync(int Id);
+        IDataResult<Category> GetByName(string name);
+        Task<IDataResult<Category>> GetByNameAsync(string name);
         IDataResult<IList<Category>> GetList();
         Task<IDataResult<IList<Category>>> GetListAsync();
         IResult Add(Category category);
@@ -27,5 +23,12 @@ namespace ZeusERP.Business.Abstract
         Task<IResult> UpdateAsync(Category category);
         IResult Delete(Category category);
         Task<IResult> DeleteAsync(Category category);
+
+        // DTOs
+
+        IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId);
+        Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId);
+        IDataResult<CategoryListDto> GetCategoryList();
+        Task<IDataResult<CategoryListDto>> GetCategoryListAsync();
     }
 }

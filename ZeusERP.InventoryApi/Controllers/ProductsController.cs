@@ -16,78 +16,28 @@ namespace ZeusERP.InventoryApi.Controllers
     [EnableCors()]
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ControllerBase
+    public class ProductsController : ControllerBase
     {
         private IProductService _productService;
         private ICategoryService _categoryService;
 
-        public ProductController(IProductService productService, ICategoryService categoryService)
+        public ProductsController(IProductService productService, ICategoryService categoryService)
         {
             _productService = productService;
             _categoryService = categoryService;
-        }
-        [HttpGet("Get/{id}")]
-        public IActionResult GetProductById(int id)
-        {
-            var result = _productService.GetById(id);
-            if(result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetDetails/{id}")]
-        public IActionResult GetProductDetailsById(int id)
-        {
-            var result = _productService.GetProductDetailsById(id);
-            if(result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetDetailsAsync/{id}")]
-        public async Task<IActionResult> GetProductDetailsByIdAsync(int id)
-        {
-            var result = await _productService.GetProductDetailsByIdAsync(id);
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetList")]
-        public IActionResult GetProductList()
-        {
-            var result = _productService.GetProductListItems();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-
-        [HttpGet("GetListAsync")]
-        public async Task<IActionResult> GetProductListAsync()
-        {
-            var result = await _productService.GetProductListItemsAsync();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
         }
 
         [HttpGet("GetAll")]
         public IActionResult Products()
         {
             var result = _productService.GetList();
-            if(result.Success)
+            if (result.Success)
             {
                 return Ok(result.Data);
             }
             return BadRequest(result.Message);
         }
+
         [HttpGet("GetAllAsync")]
         public async Task<IActionResult> ProductsAsync()
         {
@@ -98,11 +48,84 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
+        [HttpGet("GetList")]
+        public IActionResult GetProductListDto()
+        {
+            var result = _productService.GetProductListDto();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("GetListAsync")]
+        public async Task<IActionResult> GetProductListDtoAsync()
+        {
+            var result = await _productService.GetProductListDtoAsync();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("Get/{id}")]
+        public IActionResult GetProductById(int id)
+        {
+            var result = _productService.GetById(id);
+            if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetAsync/{id}")]
+        public async Task<IActionResult> GetProductByIdAsync(int id)
+        {
+            var result = await _productService.GetByIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetDetails/{id}")]
+        public IActionResult GetProductDetailsDtoById(int id)
+        {
+            var result = _productService.GetProductDetailsById(id);
+            if(result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpGet("GetDetailsAsync/{id}")]
+        public async Task<IActionResult> GetProductDetailsDtoByIdAsync(int id)
+        {
+            var result = await _productService.GetProductDetailsByIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
         [HttpPost("Add")]
         public IActionResult Add(Product product)
         {
             var result = _productService.Add(product);
             if(result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpPost("AddAsync")]
+        public async Task<IActionResult> AddAsync(Product product)
+        {
+            var result = await _productService.AddAsync(product);
+            if (result.Success)
             {
                 return Ok(result.Message);
             }
@@ -118,11 +141,31 @@ namespace ZeusERP.InventoryApi.Controllers
             }
             return BadRequest(result.Message);
         }
-        [HttpDelete("Delete/{id}")]
-        public IActionResult Delete(int id)
+        [HttpPost("UpdateAsync")]
+        public async Task<IActionResult> UpdateAsync(Product product)
         {
-            var productToDelete = _productService.GetById(id);
-            var result = _productService.Delete(productToDelete.Data);
+            var result = await _productService.UpdateAsync(product);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
+        [HttpDelete("Delete")]
+        public IActionResult Delete(Product product)
+        {
+            var result = _productService.Delete(product);
+            if (result.Success)
+            {
+                return Ok(result.Message);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("DeleteAsync")]
+        public async Task<IActionResult> DeleteAsync(Product product)
+        {
+            var result = await _productService.DeleteAsync(product);
             if (result.Success)
             {
                 return Ok(result.Message);

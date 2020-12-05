@@ -13,12 +13,9 @@ namespace ZeusERP.Business.Abstract
     {
         IDataResult<IList<Product>> GetList();
         Task<IDataResult<IList<Product>>> GetListAsync();
-        IDataResult<Product> GetById(int productId);
-        Task<IDataResult<Product>> GetByIdAsync(int productId);
-        IDataResult<ProductDetailsDto> GetProductDetailsById(int productId);
-        Task<IDataResult<ProductDetailsDto>> GetProductDetailsByIdAsync(int productId);
-        IDataResult<IList<ProductListDto>> GetProductListItems();
-        Task<IDataResult<IList<ProductListDto>>> GetProductListItemsAsync();
+        IDataResult<Product> GetById(int id);
+        Task<IDataResult<Product>> GetByIdAsync(int id);
+        
         IResult Add(Product product);
         Task<IResult> AddAsync(Product product);
 
@@ -27,5 +24,13 @@ namespace ZeusERP.Business.Abstract
 
         IResult Delete(Product product);
         Task<IResult> DeleteAsync(Product product);
+
+        // DTOs
+
+        IDataResult<ProductDetailsDto> GetProductDetailsById(int productId);
+        Task<IDataResult<ProductDetailsDto>> GetProductDetailsByIdAsync(int productId);
+        IDataResult<IList<ProductListDto>> GetProductListDto();
+        Task<IDataResult<IList<ProductListDto>>> GetProductListDtoAsync();
+
     }
 }

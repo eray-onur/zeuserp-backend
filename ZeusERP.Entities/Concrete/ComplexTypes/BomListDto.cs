@@ -9,11 +9,12 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
 {
     public class BomListDto : IDto
     {
-        public int Id { get; set; }
+        public int BoMId { get; set; }
+        public string BoMReference { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        //public int BoMTypeId { get { return Enum.GetName(BoMType, this.BoMTypeId); } }
+        public BoMType BoMType { get; set; }
         public decimal Quantity { get; set; }
-        public IList<BillOfMaterialsComponent> Components { get; set; }
+        public IList<BillOfMaterialsComponent> BoMComponents { get; set; }
     }
 }

@@ -1,0 +1,5 @@
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.csprojAssemblyReference.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.AssemblyInfoInputs.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.AssemblyInfo.cs
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.csproj.CoreCompileInputs.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.MvcApplicationPartsAssemblyInfo.cache

@@ -98,7 +98,7 @@ namespace ZeusERP.Business.Concrete
             
         }
 
-        public IDataResult<IList<ProductListDto>> GetProductListItems()
+        public IDataResult<IList<ProductListDto>> GetProductListDto()
         {
             var productListDtos = new List<ProductListDto>();
             var productCategory = new Category();
@@ -125,7 +125,7 @@ namespace ZeusERP.Business.Concrete
         }
 
         
-        public async Task<IDataResult<IList<ProductListDto>>> GetProductListItemsAsync()
+        public async Task<IDataResult<IList<ProductListDto>>> GetProductListDtoAsync()
         {
             var productListDtos = new List<ProductListDto>();
             var productCategory = new Category();

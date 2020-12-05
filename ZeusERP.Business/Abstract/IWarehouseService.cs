@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 
 using ZeusERP.Core.Utilities.Results;
 using ZeusERP.Entities.Concrete;
+using ZeusERP.Entities.Concrete.ComplexTypes;
 
 namespace ZeusERP.Business.Abstract
 {
@@ -22,5 +23,11 @@ namespace ZeusERP.Business.Abstract
 
         IResult Delete(Warehouse warehouse);
         Task<IResult> DeleteAsync(Warehouse warehouse);
+
+        // DTOS
+        IDataResult<WarehouseDetailsDto> GetWarehouseDetailsDtoById(int warehouseId);
+        Task<IDataResult<WarehouseDetailsDto>> GetWarehouseDetailsDtoByIdAsync(int warehouseId);
+        IDataResult<IList<WarehouseListDto>> GetWarehouseListDto();
+        Task<IDataResult<IList<WarehouseListDto>>> GetWarehouseListDtoAsync();
     }
 }

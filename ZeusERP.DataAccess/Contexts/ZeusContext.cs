@@ -18,11 +18,24 @@ namespace ZeusERP.DataAccess.Contexts
     public class ZeusContext : DbContext
     {
         public string ConnectionString { get; set; }
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Location> Locations { get; set; }
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; } 
         public DbSet<BillOfMaterials> BillOfMaterials { get; set; }
-        public DbSet<BillOfMaterialsComponent> BillOfMaterialsComponent { get; set; }
+        public DbSet<BillOfMaterialsComponent> BillOfMaterialsComponents { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<Transfer> Transfers { get; set; }
+        public DbSet<Replenishment> Replenishments { get; set; }
+        public DbSet<Manufacturing> ManufacturingOrders { get; set; }
+        public DbSet<ManufacturingComponent> ManufacturingOrderComponents { get; set; }
+        public DbSet<Unbuild> Unbuilds { get; set; }
+
+        // public DbSet<InventoryAdjustment> InventoryAdjustments { get; set; }
+        
+        public DbSet<Warehouse> Warehouses { get; set; }
+        public DbSet<Route> Routes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
