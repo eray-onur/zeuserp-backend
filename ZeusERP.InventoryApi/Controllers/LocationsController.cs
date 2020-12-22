@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class LocationsController : ControllerBase
@@ -30,7 +34,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetAllAsync")]
@@ -41,7 +45,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetList")]
         public IActionResult GetLocationListDto()
@@ -51,7 +55,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetListAsync")]
@@ -62,7 +66,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("Get/{id}")]
@@ -73,7 +77,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> GetLocationByIdAsync(int id)
@@ -83,7 +87,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetails/{id}")]
         public IActionResult GetLocationDetailsDtoById(int id)
@@ -93,7 +97,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetailsAsync/{id}")]
         public async Task<IActionResult> GetLocationDetailsDtoByIdAsync(int id)
@@ -103,7 +107,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpPost("Add")]
@@ -112,9 +116,9 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = _locationService.Add(location);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("AddAsync")]
         public async Task<IActionResult> AddAsync(Location location)
@@ -122,49 +126,51 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = await _locationService.AddAsync(location);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Update")]
-        public IActionResult Update(Location location)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Location location)
         {
             var result = _locationService.Update(location);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(Location location)
+        [HttpPut("UpdateAsync/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Location location)
         {
             var result = await _locationService.UpdateAsync(location);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("Delete")]
-        public IActionResult Delete(Location location)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _locationService.Delete(location);
+            var locToDelete = _locationService.GetById(id);
+            var result = _locationService.Delete(locToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("DeleteAsync")]
-        public async Task<IActionResult> DeleteAsync(Location location)
+        [HttpDelete("DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _locationService.DeleteAsync(location);
+            var locToDelete = await _locationService.GetByIdAsync(id);
+            var result = await _locationService.DeleteAsync(locToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
     }
 }

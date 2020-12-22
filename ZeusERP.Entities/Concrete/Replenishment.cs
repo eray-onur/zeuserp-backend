@@ -14,11 +14,10 @@ namespace ZeusERP.Entities.Concrete
     {
         [Key]
         public int Id { get; set; }
+        [Required]
         public string Reference { get; set; }
         public int ProductToReplenishId { get; set; }
         public int LocationId { get; set; }
-        public int WarehouseId { get; set; }
-        public int BomId { get; set; }
         public decimal OnHandQuantity { get; set; }
         public decimal OrderQuantity { get; set; }
         public ReplenishmentStatus Status { get; set; }

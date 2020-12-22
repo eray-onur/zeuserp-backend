@@ -11,6 +11,7 @@ namespace ZeusERP.Entities.Concrete
     public class Transfer : IEntity
     {
         public int Id { get; set; }
+        public string Reference { get; set; }
         public int ReceiveFromId { get; set; }
         public int OperationTypeId { get; set; }
         public int DestinationLocationId { get; set; }

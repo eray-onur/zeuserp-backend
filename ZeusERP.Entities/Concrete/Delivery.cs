@@ -14,9 +14,8 @@ namespace ZeusERP.Entities.Concrete
         [Key]
         public int Id { get; set; }
         public string Reference { get; set; }
-        public int DeliveryAddressId { get; set; }
-        public int SourceLocationId { get; set; }
+        public int? DeliveryAddressId { get; set; }
+        public int? SourceLocationId { get; set; }
         public DateTime ScheduledDate { get; set; }
-        public int DeliveryOperationsId { get; set; }
     }
 }

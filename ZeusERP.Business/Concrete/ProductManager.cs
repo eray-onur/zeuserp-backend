@@ -68,12 +68,16 @@ namespace ZeusERP.Business.Concrete
                 ProductId = product.Id,
                 ProductName = product.Name,
                 ProductDescription = product.Description,
-                CategoryId = productCategory.Id,
-                CategoryName = productCategory.Name,
                 ProductPrice = product.UnitPrice,
                 ProductCost = product.UnitCost,
                 ProductQuantity = product.UnitCount,
             };
+
+            if (productCategory != null)
+            {
+                productDetailsDto.CategoryId = productCategory.Id;
+                productDetailsDto.CategoryName = productCategory.Name;
+            }
 
             return new SuccessDataResult<ProductDetailsDto>(productDetailsDto);
         }
@@ -87,12 +91,16 @@ namespace ZeusERP.Business.Concrete
                 ProductId = product.Id,
                 ProductName = product.Name,
                 ProductDescription = product.Description,
-                CategoryId = productCategory.Id,
-                CategoryName = productCategory.Name,
                 ProductPrice = product.UnitPrice,
                 ProductCost = product.UnitCost,
                 ProductQuantity = product.UnitCount,
             };
+
+            if(productCategory != null)
+            {
+                productDetailsDto.CategoryId = productCategory.Id;
+                productDetailsDto.CategoryName = productCategory.Name;
+            }
 
             return new SuccessDataResult<ProductDetailsDto>(productDetailsDto);
             
@@ -134,19 +142,21 @@ namespace ZeusERP.Business.Concrete
             foreach (Product p in products)
             {
                 productCategory = await _categoryDao.GetAsync(c => c.Id == p.CategoryId);
-                productListDtos.Add(
-                    new ProductListDto
-                    {
-                        ProductId = p.Id,
-                        ProductName = p.Name,
-                        ProductDescription = p.Description,
-                        CategoryId = productCategory.Id,
-                        CategoryName = productCategory.Name,
-                        ProductPrice = p.UnitPrice,
-                        ProductCost = p.UnitCost,
-                        ProductQuantity = p.UnitCount,
-                    }
-                );
+                var productListDto = new ProductListDto
+                {
+                    ProductId = p.Id,
+                    ProductName = p.Name,
+                    ProductDescription = p.Description,
+                    ProductPrice = p.UnitPrice,
+                    ProductCost = p.UnitCost,
+                    ProductQuantity = p.UnitCount,
+                };
+                if (productCategory != null)
+                {
+                    productListDto.CategoryId = productCategory.Id;
+                    productListDto.CategoryName = productCategory.Name;
+                }
+                productListDtos.Add(productListDto);
             }
             return new SuccessDataResult<IList<ProductListDto>>(productListDtos);
         }

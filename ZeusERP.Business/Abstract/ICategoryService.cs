@@ -28,7 +28,7 @@ namespace ZeusERP.Business.Abstract
 
         IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId);
         Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId);
-        IDataResult<CategoryListDto> GetCategoryList();
-        Task<IDataResult<CategoryListDto>> GetCategoryListAsync();
+        IDataResult<IList<CategoryListDto>> GetCategoryList();
+        Task<IDataResult<IList<CategoryListDto>>> GetCategoryListAsync();
     }
 }

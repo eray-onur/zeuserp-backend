@@ -15,11 +15,12 @@ namespace ZeusERP.Entities.Concrete
         public string Reference { get; set; }
         public int ProductId { get; set; }
         public int BillOfMaterialsId { get; set; }
-        public string BillOfMaterialsName { get; set; }
+        public string BillOfMaterialsReference { get; set; }
         public decimal QuantityToManufacture { get; set; }
         public decimal QuantityManufactured { get; set; }
         public DateTime ScheduledDate { get; set; }
         public int ResponsibleId { get; set; }
+        public int ComponentsId { get; set; }
         public int ComponentsLocationId { get; set; }
         public int FinishedProductsLocationId { get; set; }
         public ManufacturingState State { get; set; }

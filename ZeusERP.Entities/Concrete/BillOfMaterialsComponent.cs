@@ -13,7 +13,7 @@ namespace ZeusERP.Entities.Concrete
     {
         [Key]
         public int Id { get; set; }
-        public int BoMId { get; set; }
+        public int BomId { get; set; }
         public int ProductId { get; set; }
         public decimal Quantity { get; set; }
     }

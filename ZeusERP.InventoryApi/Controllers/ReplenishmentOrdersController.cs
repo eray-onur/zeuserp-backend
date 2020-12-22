@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ReplenishmentOrdersController : ControllerBase
@@ -30,7 +34,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetAllAsync")]
@@ -41,28 +45,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
-        }
-        [HttpGet("GetList")]
-        public IActionResult GetReplenishmentListDto()
-        {
-            var result = _replenishmentService.GetReplenishmentListDto();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
-        }
-
-        [HttpGet("GetListAsync")]
-        public async Task<IActionResult> GetReplenishmentListDtoAsync()
-        {
-            var result = await _replenishmentService.GetReplenishmentListDtoAsync();
-            if (result.Success)
-            {
-                return Ok(result.Data);
-            }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("Get/{id}")]
@@ -73,7 +56,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> GetReplenishmentByIdAsync(int id)
@@ -83,9 +66,9 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpGet("GetDetails/{id}")]
+        [HttpGet("GetDetailsById/{id}")]
         public IActionResult GetReplenishmentDetailsDtoById(int id)
         {
             var result = _replenishmentService.GetReplenishmentDetailsDtoById(id);
@@ -93,9 +76,9 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpGet("GetDetailsAsync/{id}")]
+        [HttpGet("GetDetailsByIdAsync/{id}")]
         public async Task<IActionResult> GetReplenishmentDetailsDtoByIdAsync(int id)
         {
             var result = await _replenishmentService.GetReplenishmentDetailsDtoByIdAsync(id);
@@ -103,7 +86,28 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
+        }
+
+        [HttpGet("GetDetails")]
+        public IActionResult GetReplenishmentDetailsDto()
+        {
+            var result = _replenishmentService.GetReplenishmentDetailsDtos();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
+        }
+        [HttpGet("GetDetailsAsync")]
+        public async Task<IActionResult> GetReplenishmentDetailsDtoAsync()
+        {
+            var result = await _replenishmentService.GetReplenishmentDetailsDtosAsync();
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpPost("Add")]
@@ -112,9 +116,9 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = _replenishmentService.Add(replenishment);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("AddAsync")]
         public async Task<IActionResult> AddAsync(Replenishment replenishment)
@@ -122,49 +126,51 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = await _replenishmentService.AddAsync(replenishment);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Update")]
-        public IActionResult Update(Replenishment replenishment)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Replenishment replenishment)
         {
             var result = _replenishmentService.Update(replenishment);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(Replenishment replenishment)
+        [HttpPut("UpdateAsync/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Replenishment replenishment)
         {
             var result = await _replenishmentService.UpdateAsync(replenishment);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("Delete")]
-        public IActionResult Delete(Replenishment replenishment)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _replenishmentService.Delete(replenishment);
+            var replenishmentToDelete = _replenishmentService.GetById(id);
+            var result = _replenishmentService.Delete(replenishmentToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("DeleteAsync")]
-        public async Task<IActionResult> DeleteAsync(Replenishment replenishment)
+        [HttpDelete("DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _replenishmentService.DeleteAsync(replenishment);
+            var replenishmentToDelete = await _replenishmentService.GetByIdAsync(id);
+            var result = await _replenishmentService.DeleteAsync(replenishmentToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
     }
 }

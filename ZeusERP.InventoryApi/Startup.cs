@@ -33,34 +33,31 @@ namespace ZeusERP.InventoryApi
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddCors(
-                //options => options.AddDefaultPolicy(
-                //    builder => builder.AllowAnyOrigin()
-                //)
+                options => options.AddPolicy("TCAPolicy", builder =>
+                {
+                    builder
+                        .AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader();
+                })
             );
             services.AddControllers();
             services.AddDbContext<ZeusContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SaffetDB")));
 
-            var x = Configuration.GetConnectionString("SaffetDB");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseRouting();
+
+            app.UseCors("TCAPolicy");
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseRouting();
-
-            app.UseCors(
-                x => x
-                .AllowAnyMethod()
-                .AllowAnyHeader()
-                .AllowAnyOrigin()
-            );
-
-            app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {

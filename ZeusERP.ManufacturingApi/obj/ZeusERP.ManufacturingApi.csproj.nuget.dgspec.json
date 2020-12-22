@@ -4,14 +4,81 @@
     "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj": {}
   },
   "projects": {
-    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj": {
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj",
-        "projectName": "ZeusERP.ManufacturingApi",
-        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj",
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj",
+        "projectName": "ZeusERP.Business",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj",
         "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
-        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\obj\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj"
+              },
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Autofac": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
+        "projectName": "ZeusERP.Core",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj",
+        "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -39,6 +106,215 @@
       "frameworks": {
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[12.0.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
+        "projectName": "ZeusERP.DataAccess",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\ZeusERP.DataAccess.csproj",
+        "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj"
+              },
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[3.1.9, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[3.1.9, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
+        "projectName": "ZeusERP.Entities",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\ZeusERP.Entities.csproj",
+        "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Entities\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Core\\ZeusERP.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj",
+        "projectName": "ZeusERP.ManufacturingApi",
+        "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\ZeusERP.ManufacturingApi.csproj",
+        "packagesPath": "C:\\Users\\eonur\\.nuget\\packages\\",
+        "outputPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.ManufacturingApi\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\eonur\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
+            "projectReferences": {
+              "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj": {
+                "projectPath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.Business\\ZeusERP.Business.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
+          "dependencies": {
+            "Autofac.Extensions.DependencyInjection": {
+              "target": "Package",
+              "version": "[7.1.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

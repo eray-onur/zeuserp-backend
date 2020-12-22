@@ -15,9 +15,11 @@ namespace ZeusERP.Business.Concrete
     public class WarehouseManager : IWarehouseService
     {
         private IWarehouseDao _warehouseDao;
-        public WarehouseManager(IWarehouseDao warehouseDao)
+        private ILocationDao _locationDao;
+        public WarehouseManager(IWarehouseDao warehouseDao, ILocationDao locationDao)
         {
             _warehouseDao = warehouseDao;
+            _locationDao = locationDao;
         }
         public IDataResult<IList<Warehouse>> GetList()
         {
@@ -79,22 +81,100 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<WarehouseDetailsDto> GetWarehouseDetailsDtoById(int warehouseId)
         {
-            throw new NotImplementedException();
+            var warehouse = _warehouseDao.Get(p => p.Id == warehouseId);
+            var whLocation = _warehouseDao.Get(l => l.Id == warehouse.LocationId);
+            var warehouseDetailsDto = new WarehouseDetailsDto
+            {
+                WarehouseId = warehouse.Id,
+                WarehouseName = warehouse.Name,
+                WarehouseCode = warehouse.WarehouseCode,
+                HasLimitedStockCount = warehouse.HasLimitedStockCount,
+                RouteListId = warehouse.RouteListId,
+                StockLimit = warehouse.StockLimit,
+                UsedForManufacture = warehouse.UsedForManufacture
+            };
+
+            if (whLocation != null)
+            {
+                warehouseDetailsDto.LocationId = whLocation.Id;
+                warehouseDetailsDto.LocationName = whLocation.Name;
+            }
+
+            return new SuccessDataResult<WarehouseDetailsDto>(warehouseDetailsDto);
         }
 
-        public Task<IDataResult<WarehouseDetailsDto>> GetWarehouseDetailsDtoByIdAsync(int warehouseId)
+        public async Task<IDataResult<WarehouseDetailsDto>> GetWarehouseDetailsDtoByIdAsync(int warehouseId)
         {
-            throw new NotImplementedException();
+            var warehouse = await _warehouseDao.GetAsync(p => p.Id == warehouseId);
+            var whLocation = await _locationDao.GetAsync(l => l.Id == warehouse.LocationId);
+            var warehouseDetailsDto = new WarehouseDetailsDto
+            {
+                WarehouseId = warehouse.Id,
+                WarehouseName = warehouse.Name,
+                WarehouseCode = warehouse.WarehouseCode,
+                HasLimitedStockCount = warehouse.HasLimitedStockCount,
+                RouteListId = warehouse.RouteListId,
+                StockLimit = warehouse.StockLimit,
+                UsedForManufacture = warehouse.UsedForManufacture
+            };
+
+            if (whLocation != null)
+            {
+                warehouseDetailsDto.LocationId = whLocation.Id;
+                warehouseDetailsDto.LocationName = whLocation.Name;
+            }
+
+            return new SuccessDataResult<WarehouseDetailsDto>(warehouseDetailsDto);
         }
 
         public IDataResult<IList<WarehouseListDto>> GetWarehouseListDto()
         {
-            throw new NotImplementedException();
+            var warehouses = _warehouseDao.GetList();
+            IList<WarehouseListDto> warehouseListDtos = new List<WarehouseListDto>();
+            foreach (Warehouse w in warehouses)
+            {
+                var whLocation = _warehouseDao.Get(l => l.Id == w.LocationId);
+                var warehouseListDto = new WarehouseListDto
+                {
+                    WarehouseId = w.Id,
+                    WarehouseName = w.Name,
+                    WarehouseCode = w.WarehouseCode
+                };
+
+                if (whLocation != null)
+                {
+                    warehouseListDto.LocationId = whLocation.Id;
+                    warehouseListDto.LocationName = whLocation.Name;
+                }
+                warehouseListDtos.Add(warehouseListDto);
+            }
+
+            return new SuccessDataResult<IList<WarehouseListDto>>(warehouseListDtos);
         }
 
-        public Task<IDataResult<IList<WarehouseListDto>>> GetWarehouseListDtoAsync()
+        public async Task<IDataResult<IList<WarehouseListDto>>> GetWarehouseListDtoAsync()
         {
-            throw new NotImplementedException();
+            var warehouses = await _warehouseDao.GetListAsync();
+            IList<WarehouseListDto> warehouseListDtos = new List<WarehouseListDto>();
+            foreach(Warehouse w in warehouses)
+            {
+                var whLocation = await _warehouseDao.GetAsync(l => l.Id == w.LocationId);
+                var warehouseListDto = new WarehouseListDto
+                {
+                    WarehouseId = w.Id,
+                    WarehouseName = w.Name,
+                    WarehouseCode = w.WarehouseCode
+                };
+
+                if (whLocation != null)
+                {
+                    warehouseListDto.LocationId = whLocation.Id;
+                    warehouseListDto.LocationName = whLocation.Name;
+                }
+                warehouseListDtos.Add(warehouseListDto);
+            }
+
+            return new SuccessDataResult<IList<WarehouseListDto>>(warehouseListDtos);
         }
     }
 }

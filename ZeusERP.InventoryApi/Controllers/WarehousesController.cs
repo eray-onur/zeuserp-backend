@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -11,6 +14,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class WarehousesController : ControllerBase
@@ -28,7 +32,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAllAsync")]
         public async Task<IActionResult> WarehousesAsync()
@@ -38,7 +42,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("Get/{id}")]
         public IActionResult GetWarehouseById(int id)
@@ -48,7 +52,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> WarehouseByIdAsync(int id)
@@ -58,7 +62,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetails/{id}")]
         public IActionResult WarehouseDetailsDtoById(int id)
@@ -68,7 +72,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetailsAsync/{id}")]
         public async Task<IActionResult> WarehouseDetailsDtoByIdAsync(int id)
@@ -78,7 +82,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetList")]
         public IActionResult WarehouseListDto()
@@ -88,7 +92,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetListAsync")]
         public async Task<IActionResult> WarehouseListDtoAsync()
@@ -98,7 +102,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("Add")]
         public IActionResult Add(Warehouse warehouse)
@@ -106,9 +110,9 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = _warehouseService.Add(warehouse);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("AddAsync")]
         public async Task<IActionResult> AddAsync(Warehouse warehouse)
@@ -116,49 +120,51 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = await _warehouseService.AddAsync(warehouse);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Update")]
-        public IActionResult Update(Warehouse warehouse)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Warehouse warehouse)
         {
             var result = _warehouseService.Update(warehouse);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(Warehouse warehouse)
+        [HttpPut("UpdateAsync/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Warehouse warehouse)
         {
             var result = await _warehouseService.UpdateAsync(warehouse);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Delete")]
-        public IActionResult Delete(Warehouse warehouse)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _warehouseService.Delete(warehouse);
+            var whToDelete = _warehouseService.GetById(id);
+            var result = _warehouseService.Delete(whToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("DeleteAsync")]
-        public async Task<IActionResult> DeleteAsync(Warehouse warehouse)
+        [HttpDelete("DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _warehouseService.DeleteAsync(warehouse);
+            var whToDelete = await _warehouseService.GetByIdAsync(id);
+            var result = await _warehouseService.DeleteAsync(whToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
     }
 }

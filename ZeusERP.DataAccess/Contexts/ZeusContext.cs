@@ -26,6 +26,7 @@ namespace ZeusERP.DataAccess.Contexts
         public DbSet<BillOfMaterialsComponent> BillOfMaterialsComponents { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Delivery> Deliveries { get; set; }
+        public DbSet<DeliveryOperation> DeliveryOperations { get; set; }
         public DbSet<Transfer> Transfers { get; set; }
         public DbSet<Replenishment> Replenishments { get; set; }
         public DbSet<Manufacturing> ManufacturingOrders { get; set; }
@@ -41,7 +42,7 @@ namespace ZeusERP.DataAccess.Contexts
             base.OnConfiguring(optionsBuilder);
             try
             {
-                ConnectionString = WebConfig.GetConfigItem("SaffetDB");
+                ConnectionString = WebConfig.GetConfigItem("SaffetDB").Result;
                 Console.WriteLine(ConnectionString);
             }
             catch(Exception ex)

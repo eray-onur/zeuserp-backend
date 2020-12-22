@@ -13,6 +13,7 @@ namespace ZeusERP.Entities.Concrete
     public class Receipt : IEntity
     {
         public int Id { get; set; }
+        public string Reference { get; set; }
         public int ReceiveFromId { get; set; }
         public DateTime ScheduledDate { get; set; }
         public int ReceiptOperationsId { get; set; }

@@ -30,7 +30,8 @@ namespace ZeusERP.Business.Abstract
 
         IDataResult<ReplenishmentDetailsDto> GetReplenishmentDetailsDtoById(int replenishmentId);
         Task<IDataResult<ReplenishmentDetailsDto>> GetReplenishmentDetailsDtoByIdAsync(int replenishmentId);
-        IDataResult<IList<ReplenishmentListDto>> GetReplenishmentListDto();
-        Task<IDataResult<IList<ReplenishmentListDto>>> GetReplenishmentListDtoAsync();
+
+        IDataResult<IList<ReplenishmentDetailsDto>> GetReplenishmentDetailsDtos();
+        Task<IDataResult<IList<ReplenishmentDetailsDto>>> GetReplenishmentDetailsDtosAsync();
     }
 }

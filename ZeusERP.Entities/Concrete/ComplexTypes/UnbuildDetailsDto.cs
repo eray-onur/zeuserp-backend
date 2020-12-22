@@ -10,6 +10,8 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
     {
         public int UnbuildOrderId { get; set; }
         public string UnbuildOrderReference { get; set; }
+        public int ProductToManufactureId { get; set; }
+        public string ProductToManufactureName { get; set; }
         public int ManufacturingOrderId { get; set; }
         public string ManufacturingOrderReference { get; set; }
         public int BoMId { get; set; }

@@ -15,9 +15,11 @@ namespace ZeusERP.Business.Concrete
     public class LocationManager : ILocationService
     {
         private ILocationDao _locationDao;
-        public LocationManager(ILocationDao locationDao)
+        private IAddressDao _addressDao;
+        public LocationManager(ILocationDao locationDao, IAddressDao addressDao)
         {
             _locationDao = locationDao;
+            _addressDao = addressDao;
         }
         public IDataResult<IList<Location>> GetList()
         {
@@ -78,22 +80,86 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<LocationDetailsDto> GetLocationDetailsDtoById(int locationId)
         {
-            throw new NotImplementedException();
+            var location = _locationDao.Get(l => l.Id == locationId);
+            var locAddress = _addressDao.Get(a => a.Id == location.AddressId);
+
+            var locationDetailsDto = new LocationDetailsDto
+            {
+                LocationId = location.Id,
+                LocationCode = location.Code,
+                LocationName = location.Name,
+                LocationTypeId = location.LocationTypeId,
+                LocationTypeName = location.LocationTypeId.ToString(),
+                IsInternalLocation = location.IsInternalLocation,
+                IsReturnLocation = location.IsReturnLocation,
+                IsScrapLocation = location.IsScrapLocation,
+                AddressId = locAddress.Id,
+                AddressTitle = locAddress.Title
+            };
+
+            return new SuccessDataResult<LocationDetailsDto>(locationDetailsDto);
         }
 
-        public Task<IDataResult<LocationDetailsDto>> GetLocationDetailsDtoByIdAsync(int locationId)
+        public async Task<IDataResult<LocationDetailsDto>> GetLocationDetailsDtoByIdAsync(int locationId)
         {
-            throw new NotImplementedException();
+            var location = await _locationDao.GetAsync(l => l.Id == locationId);
+            var locAddress = await _addressDao.GetAsync(a => a.Id == location.AddressId);
+
+            var locationDetailsDto = new LocationDetailsDto
+            {
+                LocationId = location.Id,
+                LocationCode = location.Code,
+                LocationName = location.Name,
+                LocationTypeId = location.LocationTypeId,
+                LocationTypeName = location.LocationTypeId.ToString(),
+                IsInternalLocation = location.IsInternalLocation,
+                IsReturnLocation = location.IsReturnLocation,
+                IsScrapLocation = location.IsScrapLocation,
+                AddressId = locAddress.Id,
+                AddressTitle = locAddress.Title
+            };
+
+            return new SuccessDataResult<LocationDetailsDto>(locationDetailsDto);
         }
 
-        public IDataResult<IList<LocationDetailsDto>> GetLocationListDto()
+        public IDataResult<IList<LocationListDto>> GetLocationListDto()
         {
-            throw new NotImplementedException();
+            var locations = _locationDao.GetList();
+            IList<LocationListDto> locationListDtos = new List<LocationListDto>();
+
+            foreach (Location location in locations)
+            {
+                //var locAddress = _addressDao.Get(a => a.Id == location.AddressId);
+                var locationListDto = new LocationListDto
+                {
+                    LocationId = location.Id,
+                    LocationCode = location.Code,
+                    LocationName = location.Name,
+                };
+                locationListDtos.Add(locationListDto);
+            }
+
+            return new SuccessDataResult<IList<LocationListDto>>(locationListDtos);
         }
 
-        public Task<IDataResult<IList<LocationDetailsDto>>> GetLocationListDtoAsync()
+        public async Task<IDataResult<IList<LocationListDto>>> GetLocationListDtoAsync()
         {
-            throw new NotImplementedException();
+            var locations = await _locationDao.GetListAsync();
+            IList<LocationListDto> locationListDtos = new List<LocationListDto>();
+
+            foreach (Location location in locations)
+            {
+                //var locAddress = await _addressDao.GetAsync(a => a.Id == location.AddressId);
+                var locationListDto = new LocationListDto
+                {
+                    LocationId = location.Id,
+                    LocationCode = location.Code,
+                    LocationName = location.Name,
+                };
+                locationListDtos.Add(locationListDto);
+            }
+
+            return new SuccessDataResult<IList<LocationListDto>>(locationListDtos);
         }
     }
 }

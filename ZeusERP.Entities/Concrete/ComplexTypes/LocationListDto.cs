@@ -9,9 +9,7 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
     public class LocationListDto : IDto
     {
         public int LocationId { get; set; }
-        public string LocationCode { get; set; }
         public string LocationName { get; set; }
-        public string AddressTitle { get; set; }
-        public string AddressDescription { get; set; }
+        public string LocationCode { get; set; }
     }
 }

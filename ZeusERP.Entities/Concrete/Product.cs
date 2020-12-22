@@ -14,7 +14,7 @@ namespace ZeusERP.Entities.Concrete
     {
         [Key]
         public int Id { get; set; }
-        public int CategoryId { get; set; }
+        public int? CategoryId { get; set; }
         [Required, MaxLength(200)]
         public string Name { get; set; }
         [MaxLength(255)]
@@ -25,13 +25,13 @@ namespace ZeusERP.Entities.Concrete
         public decimal UnitCount { get; set; }
         public decimal UnitCost { get; set; }
         public decimal UnitPrice { get; set; }
-        public int BillOfMaterialsId { get; set; }
+        public int? BillOfMaterialsId { get; set; }
         public bool CanBePurchased { get; set; }
         public bool CanBeSold { get; set; }
-        public int ResponsibleId { get; set; }
+        public int? ResponsibleId { get; set; }
         public decimal Weight { get; set; }
         public decimal Volume { get; set; }
-        public int BoMId { get; set; }
-        public string ImgPath { get; set; }
+        public int? BoMId { get; set; }
+        public string? ImgPath { get; set; }
     }
 }

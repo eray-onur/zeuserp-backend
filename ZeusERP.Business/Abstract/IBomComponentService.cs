@@ -13,6 +13,8 @@ namespace ZeusERP.Business.Abstract
     {
         IDataResult<BillOfMaterialsComponent> GetById(int id);
         Task<IDataResult<BillOfMaterialsComponent>> GetByIdAsync(int id);
+        IDataResult<IList<BillOfMaterialsComponent>> GetListByOrderId(int orderId);
+        Task<IDataResult<IList<BillOfMaterialsComponent>>> GetListByOrderIdAsync(int orderId);
         IDataResult<IList<BillOfMaterialsComponent>> GetList();
         Task<IDataResult<IList<BillOfMaterialsComponent>>> GetListAsync();
         IDataResult<IList<BillOfMaterialsComponent>> GetListByBomId(int bomId);
@@ -28,8 +30,9 @@ namespace ZeusERP.Business.Abstract
 
         IDataResult<BomComponentDetailsDto> GetBomComponentDetailsDtoById(int bomComponentId);
         Task<IDataResult<BomComponentDetailsDto>> GetBomComponentDetailsDtoByIdAsync(int bomComponentId);
-        IDataResult<IList<BomComponentListDto>> GetBomComponentListDto();
-        Task<IDataResult<IList<BomComponentListDto>>> GetBomComponentListDtoAsync();
+
+        IDataResult<IList<BomComponentDetailsDto>> GetBomComponentDetailsDtoByOrderId(int orderId);
+        Task<IDataResult<IList<BomComponentDetailsDto>>> GetBomComponentDetailsDtoByOrderIdAsync(int orderId);
 
 
     }

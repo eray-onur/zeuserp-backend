@@ -8,12 +8,14 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+using Newtonsoft.Json;
+
 using ZeusERP.Business.Abstract;
 using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
-    [EnableCors()]
+    [EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ProductsController : ControllerBase
@@ -35,7 +37,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetAllAsync")]
@@ -46,7 +48,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetList")]
         public IActionResult GetProductListDto()
@@ -56,7 +58,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetListAsync")]
@@ -67,7 +69,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("Get/{id}")]
@@ -78,7 +80,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> GetProductByIdAsync(int id)
@@ -88,7 +90,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetails/{id}")]
         public IActionResult GetProductDetailsDtoById(int id)
@@ -98,7 +100,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetailsAsync/{id}")]
         public async Task<IActionResult> GetProductDetailsDtoByIdAsync(int id)
@@ -108,7 +110,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpPost("Add")]
@@ -117,58 +119,61 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = _productService.Add(product);
             if(result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("AddAsync")]
         public async Task<IActionResult> AddAsync(Product product)
         {
             var result = await _productService.AddAsync(product);
+            
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Update")]
-        public IActionResult Update(Product product)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Product product)
         {
             var result = _productService.Update(product);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(Product product)
+        [HttpPut("UpdateAsync/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Product product)
         {
             var result = await _productService.UpdateAsync(product);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("Delete")]
-        public IActionResult Delete(Product product)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _productService.Delete(product);
+            var prodToDelete = _productService.GetById(id);
+            var result = _productService.Delete(prodToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
-        [HttpPost("DeleteAsync")]
-        public async Task<IActionResult> DeleteAsync(Product product)
+        [HttpDelete("DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _productService.DeleteAsync(product);
+            var prodToDelete = await _productService.GetByIdAsync(id);
+            var result = await _productService.DeleteAsync(prodToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
             return BadRequest(result.Message);
         }

@@ -15,10 +15,13 @@ namespace ZeusERP.Business.Concrete
     public class OrderReplenishmentManager : IOrderReplenishmentService
     {
         private IOrderReplenishmentDao _replenishmentDao;
-
-        public OrderReplenishmentManager(IOrderReplenishmentDao replenishmentDao)
+        private IProductDao _productDao;
+        private ILocationDao _locationDao;
+        public OrderReplenishmentManager(IOrderReplenishmentDao replenishmentDao, IProductDao productDao, ILocationDao locationDao)
         {
             _replenishmentDao = replenishmentDao;
+            _productDao = productDao;
+            _locationDao = locationDao;
         }
 
         public IDataResult<IList<Replenishment>> GetList()
@@ -81,22 +84,104 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<ReplenishmentDetailsDto> GetReplenishmentDetailsDtoById(int replenishmentId)
         {
-            throw new NotImplementedException();
+            var replenishment = _replenishmentDao.Get(r => r.Id == replenishmentId);
+            var prodToReplenish = _productDao.Get(p => p.Id == replenishment.ProductToReplenishId);
+            var replenishmentLocation = _locationDao.Get(l => l.Id == replenishment.LocationId);
+
+            var replenishmentDetailsDto = new ReplenishmentDetailsDto
+            {
+                Id = replenishment.Id,
+                Reference = replenishment.Reference,
+                ProductToReplenishId = prodToReplenish.Id,
+                ProductToReplenishName = prodToReplenish.Name,
+                LocationId = replenishmentLocation.Id,
+                LocationName = replenishmentLocation.Name,
+                OnHandQuantity = replenishment.OnHandQuantity,
+                OrderQuantity = replenishment.OrderQuantity,
+                Status = replenishment.Status
+            };
+
+            return new SuccessDataResult<ReplenishmentDetailsDto>(replenishmentDetailsDto);
         }
 
-        public Task<IDataResult<ReplenishmentDetailsDto>> GetReplenishmentDetailsDtoByIdAsync(int replenishmentId)
+        public async Task<IDataResult<ReplenishmentDetailsDto>> GetReplenishmentDetailsDtoByIdAsync(int replenishmentId)
         {
-            throw new NotImplementedException();
+            var replenishment = await _replenishmentDao.GetAsync(r => r.Id == replenishmentId);
+            var prodToReplenish = await _productDao.GetAsync(p => p.Id == replenishment.ProductToReplenishId);
+            var replenishmentLocation = await _locationDao.GetAsync(l => l.Id == replenishment.LocationId);
+
+            var replenishmentDetailsDto = new ReplenishmentDetailsDto
+            {
+                Id = replenishment.Id,
+                Reference = replenishment.Reference,
+                ProductToReplenishId = prodToReplenish.Id,
+                ProductToReplenishName = prodToReplenish.Name,
+                LocationId = replenishmentLocation.Id,
+                LocationName = replenishmentLocation.Name,
+                OnHandQuantity = replenishment.OnHandQuantity,
+                OrderQuantity = replenishment.OrderQuantity,
+                Status = replenishment.Status
+            };
+
+            return new SuccessDataResult<ReplenishmentDetailsDto>(replenishmentDetailsDto);
         }
 
-        public IDataResult<IList<ReplenishmentListDto>> GetReplenishmentListDto()
+        public IDataResult<IList<ReplenishmentDetailsDto>> GetReplenishmentDetailsDtos()
         {
-            throw new NotImplementedException();
+            List<ReplenishmentDetailsDto> dtos = new List<ReplenishmentDetailsDto>();
+            var replenishments = _replenishmentDao.GetList();
+
+            foreach(var replenishment in replenishments)
+            {
+                var prodToReplenish = _productDao.Get(p => p.Id == replenishment.ProductToReplenishId);
+                var replenishmentLocation = _locationDao.Get(l => l.Id == replenishment.LocationId);
+
+                var replenishmentDetailsDto = new ReplenishmentDetailsDto
+                {
+                    Id = replenishment.Id,
+                    Reference = replenishment.Reference,
+                    ProductToReplenishId = prodToReplenish.Id,
+                    ProductToReplenishName = prodToReplenish.Name,
+                    LocationId = replenishmentLocation.Id,
+                    LocationName = replenishmentLocation.Name,
+                    OnHandQuantity = replenishment.OnHandQuantity,
+                    OrderQuantity = replenishment.OrderQuantity,
+                    Status = replenishment.Status
+                };
+                dtos.Add(replenishmentDetailsDto);
+            }
+            
+
+            return new SuccessDataResult<IList<ReplenishmentDetailsDto>>(dtos);
         }
 
-        public Task<IDataResult<IList<ReplenishmentListDto>>> GetReplenishmentListDtoAsync()
+        public async Task<IDataResult<IList<ReplenishmentDetailsDto>>> GetReplenishmentDetailsDtosAsync()
         {
-            throw new NotImplementedException();
+            List<ReplenishmentDetailsDto> dtos = new List<ReplenishmentDetailsDto>();
+            var replenishments = await _replenishmentDao.GetListAsync();
+
+            foreach (var replenishment in replenishments)
+            {
+                var prodToReplenish = await _productDao.GetAsync(p => p.Id == replenishment.ProductToReplenishId);
+                var replenishmentLocation = await _locationDao.GetAsync(l => l.Id == replenishment.LocationId);
+
+                var replenishmentDetailsDto = new ReplenishmentDetailsDto
+                {
+                    Id = replenishment.Id,
+                    Reference = replenishment.Reference,
+                    ProductToReplenishId = prodToReplenish.Id,
+                    ProductToReplenishName = prodToReplenish.Name,
+                    LocationId = replenishmentLocation.Id,
+                    LocationName = replenishmentLocation.Name,
+                    OnHandQuantity = replenishment.OnHandQuantity,
+                    OrderQuantity = replenishment.OrderQuantity,
+                    Status = replenishment.Status
+                };
+                dtos.Add(replenishmentDetailsDto);
+            }
+
+
+            return new SuccessDataResult<IList<ReplenishmentDetailsDto>>(dtos);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace ZeusERP.Business.Concrete
         private IOrderDeliveryDao _deliveryDao;
         public OrderDeliveryManager(IOrderDeliveryDao deliveryDao)
         {
-            this._deliveryDao = deliveryDao;
+            _deliveryDao = deliveryDao;
         }
         public IDataResult<IList<Delivery>> GetList()
         {

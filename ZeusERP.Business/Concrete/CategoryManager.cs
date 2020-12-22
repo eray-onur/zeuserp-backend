@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -47,16 +48,19 @@ namespace ZeusERP.Business.Concrete
         public IDataResult<CategoryDetailsDto> GetCategoryDetailsById(int categoryId)
         {
             var category = _categoryDao.Get(c => c.Id == categoryId);
-            var subcategory = _categoryDao.Get(c => c.SubcategoryId == category.Id);
+            var subcategory = _categoryDao.Get(c => c.ParentCategoryId == category.Id);
 
             var categoryDetailsDto = new CategoryDetailsDto
             {
                 CategoryId = category.Id,
                 CategoryName = category.Name,
                 CategoryDescription = category.Description,
-                SubcategoryId = subcategory.Id,
-                SubcategoryName = subcategory.Name,
             };
+            if (subcategory != null)
+            {
+                categoryDetailsDto.ParentCategoryId = subcategory.Id;
+                categoryDetailsDto.ParentCategoryName = subcategory.Name;
+            }
             return new SuccessDataResult<CategoryDetailsDto>(categoryDetailsDto);
         }
 
@@ -102,6 +106,17 @@ namespace ZeusERP.Business.Concrete
 
         public async Task<IResult> DeleteAsync(Category category)
         {
+            var productsOfCategory = await _productDao.GetListAsync();
+
+            bool hasDependencies = productsOfCategory.Any((product) =>
+            {
+                return product.CategoryId == category.Id;
+            });
+
+            if (hasDependencies)
+            {
+                return new SuccessResult(false, ResultMessages.CategoryNotDeleted);
+            }
             await _categoryDao.DeleteAsync(category);
             return new SuccessResult(true, ResultMessages.CategoryDeleted);
         }
@@ -109,27 +124,58 @@ namespace ZeusERP.Business.Concrete
         public async Task<IDataResult<CategoryDetailsDto>> GetCategoryDetailsByIdAsync(int categoryId)
         {
             var category = await _categoryDao.GetAsync(c => c.Id == categoryId);
-            var subcategory = await _categoryDao.GetAsync(c => c.SubcategoryId == category.Id);
+            var subcategory = await _categoryDao.GetAsync(c => c.Id == category.ParentCategoryId);
 
             var categoryDetailsDto = new CategoryDetailsDto
             {
                 CategoryId = category.Id,
                 CategoryName = category.Name,
                 CategoryDescription = category.Description,
-                SubcategoryId = subcategory.Id,
-                SubcategoryName = subcategory.Name,
             };
+            if(subcategory != null)
+            {
+                categoryDetailsDto.ParentCategoryId = subcategory.Id;
+                categoryDetailsDto.ParentCategoryName = subcategory.Name;
+            }
             return new SuccessDataResult<CategoryDetailsDto>(categoryDetailsDto);
         }
 
-        public IDataResult<CategoryListDto> GetCategoryList()
+        public IDataResult<IList<CategoryListDto>> GetCategoryList()
         {
-            throw new NotImplementedException();
+            var categoryListDtos = new List<CategoryListDto>();
+            var category = new Category();
+
+            IList<Category> categories = _categoryDao.GetList();
+            foreach (Category c in categories)
+            {
+                categoryListDtos.Add(new CategoryListDto { CategoryId = c.Id, CategoryName = c.Name, CategoryDescription = c.Description });
+            }
+            return new SuccessDataResult<List<CategoryListDto>>(categoryListDtos);
         }
 
-        public Task<IDataResult<CategoryListDto>> GetCategoryListAsync()
+        public async Task<IDataResult<IList<CategoryListDto>>> GetCategoryListAsync()
         {
-            throw new NotImplementedException();
+            var categoryListDtos = new List<CategoryListDto>();
+
+            IList<Category> categories = await _categoryDao.GetListAsync();
+            foreach (Category c in categories)
+            {
+                var categoryListDto = new CategoryListDto
+                {
+                    CategoryId = c.Id,
+                    CategoryName = c.Name,
+                    CategoryDescription = c.Description,
+                };
+                // Get Parent Category's data if it exists.
+                if (c.ParentCategoryId != null)
+                {
+                    var cat = await _categoryDao.GetAsync(p => p.Id == c.ParentCategoryId);
+                    categoryListDto.ParentCategoryId = cat.Id;
+                    categoryListDto.ParentCategoryName = cat.Name;
+                }
+                categoryListDtos.Add(categoryListDto);
+            }
+            return new SuccessDataResult<List<CategoryListDto>>(categoryListDtos);
         }
     }
 }

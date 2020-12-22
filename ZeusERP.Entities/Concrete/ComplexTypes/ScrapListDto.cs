@@ -10,7 +10,7 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
     public class ScrapListDto : IDto
     {
         public int ScrapId { get; set; }
-        public string OrderCode { get; set; }
+        public string OrderReference { get; set; }
         public string OrderDescription { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }

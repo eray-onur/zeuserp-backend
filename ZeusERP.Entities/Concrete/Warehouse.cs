@@ -18,6 +18,5 @@ namespace ZeusERP.Entities.Concrete
         public bool UsedForManufacture { get; set; }
         public int RouteListId { get; set; }
         public int LocationId { get; set; }
-        public string PhotoPath { get; set; }
     }
 }

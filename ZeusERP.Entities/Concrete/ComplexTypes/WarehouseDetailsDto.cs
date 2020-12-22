@@ -8,9 +8,9 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
 {
     public class WarehouseDetailsDto : IDto
     {
-        public int Id { get; set; }
+        public int WarehouseId { get; set; }
         public string WarehouseCode { get; set; }
-        public string Name { get; set; }
+        public string WarehouseName { get; set; }
         public bool HasLimitedStockCount { get; set; }
         public decimal StockLimit { get; set; }
         public bool UsedForManufacture { get; set; }

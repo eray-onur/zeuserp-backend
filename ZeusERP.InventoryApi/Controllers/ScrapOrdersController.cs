@@ -1,5 +1,8 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Cors;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+
+using Newtonsoft.Json;
 
 using System;
 using System.Collections.Generic;
@@ -12,6 +15,7 @@ using ZeusERP.Entities.Concrete;
 
 namespace ZeusERP.InventoryApi.Controllers
 {
+    [EnableCors("TCAPolicy")]
     [Route("api/[controller]")]
     [ApiController]
     public class ScrapOrdersController : ControllerBase
@@ -30,7 +34,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAsync/{id}")]
         public async Task<IActionResult> GetScrapOrderByIdAsync(int id)
@@ -40,7 +44,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetails/{id}")]
         public IActionResult GetScrapOrderDetailsDtoById(int id)
@@ -50,7 +54,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetDetailsAsync/{id}")]
         public async Task<IActionResult> GetScrapOrderDetailsDtoByIdAsync(int id)
@@ -60,7 +64,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetList")]
         public IActionResult GetScrapOrderListDto()
@@ -70,7 +74,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetListAsync")]
@@ -81,7 +85,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
         [HttpGet("GetAll")]
@@ -92,7 +96,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpGet("GetAllAsync")]
         public async Task<IActionResult> ScrapOrdersAsync()
@@ -102,7 +106,7 @@ namespace ZeusERP.InventoryApi.Controllers
             {
                 return Ok(result.Data);
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("Add")]
         public IActionResult Add(Scrap scrap)
@@ -110,9 +114,9 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = _scrapService.Add(scrap);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
         [HttpPost("AddAsync")]
         public async Task<IActionResult> AddAsync(Scrap scrap)
@@ -120,49 +124,51 @@ namespace ZeusERP.InventoryApi.Controllers
             var result = await _scrapService.AddAsync(scrap);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("Update")]
-        public IActionResult Update(Scrap scrap)
+        [HttpPut("Update/{id}")]
+        public IActionResult Update(int id, [FromBody] Scrap scrap)
         {
             var result = _scrapService.Update(scrap);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("UpdateAsync")]
-        public async Task<IActionResult> UpdateAsync(Scrap scrap)
+        [HttpPut("UpdateAsync/{id}")]
+        public async Task<IActionResult> UpdateAsync(int id, [FromBody] Scrap scrap)
         {
             var result = await _scrapService.UpdateAsync(scrap);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpDelete("Delete")]
-        public IActionResult Delete(Scrap scrap)
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
         {
-            var result = _scrapService.Delete(scrap);
+            var scrapToDelete = _scrapService.GetById(id);
+            var result = _scrapService.Delete(scrapToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
-        [HttpPost("DeleteAsync")]
-        public async Task<IActionResult> DeleteAsync(Scrap scrap)
+        [HttpPost("DeleteAsync/{id}")]
+        public async Task<IActionResult> DeleteAsync(int id)
         {
-            var result = await _scrapService.DeleteAsync(scrap);
+            var scrapToDelete = await _scrapService.GetByIdAsync(id);
+            var result = await _scrapService.DeleteAsync(scrapToDelete.Data);
             if (result.Success)
             {
-                return Ok(result.Message);
+                return Ok(JsonConvert.SerializeObject(result.Message));
             }
-            return BadRequest(result.Message);
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
     }
 }

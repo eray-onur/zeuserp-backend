@@ -27,7 +27,7 @@ namespace ZeusERP.Business.Abstract
 
         IDataResult<LocationDetailsDto> GetLocationDetailsDtoById(int locationId);
         Task<IDataResult<LocationDetailsDto>> GetLocationDetailsDtoByIdAsync(int locationId);
-        IDataResult<IList<LocationDetailsDto>> GetLocationListDto();
-        Task<IDataResult<IList<LocationDetailsDto>>> GetLocationListDtoAsync();
+        IDataResult<IList<LocationListDto>> GetLocationListDto();
+        Task<IDataResult<IList<LocationListDto>>> GetLocationListDtoAsync();
     }
 }

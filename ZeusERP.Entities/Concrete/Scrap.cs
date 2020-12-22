@@ -14,14 +14,14 @@ namespace ZeusERP.Entities.Concrete
     {
         [Key]
         public int Id { get; set; }
-        public string OrderCode { get; set; }
+        public string Reference { get; set; }
         public string Description { get; set; }
-        public int ProductId { get; set; }
+        public int? ProductId { get; set; }
         public decimal Quantity { get; set; }
         public DateTime ScheduledDate { get; set; }
         public DateTime CompletedDate { get; set; }
-        public int SourceLocationId { get; set; }
-        public int ScrapLocationId { get; set; }
+        public int? SourceLocationId { get; set; }
+        public int? ScrapLocationId { get; set; }
         public ScrapStatus Status { get; set; }
     }
 }

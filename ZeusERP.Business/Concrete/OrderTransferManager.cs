@@ -4,6 +4,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using ZeusERP.Business.Abstract;
+using ZeusERP.Business.Constants;
 using ZeusERP.Core.Utilities.Results;
 using ZeusERP.DataAccess.Abstract;
 using ZeusERP.Entities.Concrete;
@@ -14,63 +15,92 @@ namespace ZeusERP.Business.Concrete
     public class OrderTransferManager : IOrderTransferService
     {
         private IOrderTransferDao _transferDao;
-        public OrderTransferManager(IOrderTransferDao transferDao)
+        private ILocationDao _locationDao;
+        public OrderTransferManager(IOrderTransferDao transferDao, ILocationDao locationDao)
         {
             _transferDao = transferDao;
+            _locationDao = locationDao;
         }
         public IDataResult<IList<Transfer>> GetList()
         {
-            throw new NotImplementedException();
+            var transfers = _transferDao.GetList();
+            return new SuccessDataResult<IList<Transfer>>(transfers);
         }
 
-        public Task<IDataResult<IList<Transfer>>> GetListAsync()
+        public async Task<IDataResult<IList<Transfer>>> GetListAsync()
         {
-            throw new NotImplementedException();
+            var transfers = await _transferDao.GetListAsync();
+            return new SuccessDataResult<IList<Transfer>>(transfers);
         }
 
         public IDataResult<Transfer> GetById(int transferId)
         {
-            throw new NotImplementedException();
+            var transfer = _transferDao.Get(t => t.Id == transferId);
+            return new SuccessDataResult<Transfer>(transfer);
         }
 
-        public Task<IDataResult<Transfer>> GetByIdAsync(int transferId)
+        public async Task<IDataResult<Transfer>> GetByIdAsync(int transferId)
         {
-            throw new NotImplementedException();
+            var transfer = await _transferDao.GetAsync(t => t.Id == transferId);
+            return new SuccessDataResult<Transfer>(transfer);
         }
 
         public IResult Add(Transfer transfer)
         {
-            throw new NotImplementedException();
+            _transferDao.Add(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderAdded);
         }
 
-        public Task<IResult> AddAsync(Transfer transfer)
+        public async Task<IResult> AddAsync(Transfer transfer)
         {
-            throw new NotImplementedException();
+            await _transferDao.AddAsync(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderAdded);
         }
 
         public IResult Update(Transfer transfer)
         {
-            throw new NotImplementedException();
+            _transferDao.Update(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderUpdated);
         }
 
-        public Task<IResult> UpdateAsync(Transfer transfer)
+        public async Task<IResult> UpdateAsync(Transfer transfer)
         {
-            throw new NotImplementedException();
+            await _transferDao.UpdateAsync(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderUpdated);
         }
 
         public IResult Delete(Transfer transfer)
         {
-            throw new NotImplementedException();
+            _transferDao.Delete(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderDeleted);
         }
 
-        public Task<IResult> DeleteAsync(Transfer transfer)
+        public async Task<IResult> DeleteAsync(Transfer transfer)
         {
-            throw new NotImplementedException();
+            await _transferDao.DeleteAsync(transfer);
+            return new SuccessResult(true, ResultMessages.TransferOrderDeleted);
         }
 
         public IDataResult<TransferDetailsDto> GetTransferDetailsDtoById(int transferId)
         {
-            throw new NotImplementedException();
+            var transfer = _transferDao.Get(t => t.Id == transferId);
+            var receiveFrom = _locationDao.Get(l => l.Id == transfer.ReceiveFromId);
+            var destinationLoc = _locationDao.Get(l => l.Id == transfer.DestinationLocationId);
+            var transferDetailsDto = new TransferDetailsDto
+            {
+                Id = transfer.Id,
+                Reference = transfer.Reference,
+                OperationTypeId = transfer.OperationTypeId,
+                ReceiveFromId = receiveFrom.Id,
+                ReceiveFromName = receiveFrom.Name,
+                ScheduledDate = transfer.ScheduledDate,
+                EffectiveDate = transfer.EffectiveDate,
+                ResponsibleId = transfer.ResponsibleId,
+                DestinationLocationId = destinationLoc.Id,
+                DestinationLocationName = destinationLoc.Name,
+                TransferProductsId = transfer.TransferProductsId,
+            };
+            return new SuccessDataResult<TransferDetailsDto>(transferDetailsDto);
         }
 
         public Task<IDataResult<TransferDetailsDto>> GetTransferDetailsDtoByIdAsync(int transferId)

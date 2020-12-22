@@ -5,17 +5,18 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace ZeusERP.Core.Utilities
 {
     public static class WebConfig
     {
-        public static string GetConfigItem(string item)
+        public static async Task<string> GetConfigItem(string item)
         {
-            var ConnectionString = string.Empty;
+            string ConnectionString = string.Empty;
             try
             {
-                var appSettings = File.ReadAllText($"{Directory.GetCurrentDirectory()}/appsettings.json", Encoding.UTF8);
+                var appSettings = await File.ReadAllTextAsync($"{Directory.GetCurrentDirectory()}/appsettings.json", Encoding.UTF8);
                 var json = JsonConvert.DeserializeObject<JObject>(appSettings);
                 ConnectionString = json.GetValue("ConnectionStrings").Value<dynamic>(item);
             }

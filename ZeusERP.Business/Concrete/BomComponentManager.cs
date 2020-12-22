@@ -14,10 +14,14 @@ namespace ZeusERP.Business.Concrete
 {
     public class BomComponentManager : IBomComponentService
     {
+        private IBomDao _bomDao;
         private  IBomComponentDao _bomComponentDao;
-        public BomComponentManager(IBomComponentDao bomComponentDao)
+        private IProductDao _productDao;
+        public BomComponentManager(IBomDao bomDao, IBomComponentDao bomComponentDao, IProductDao productDao)
         {
+            _bomDao = bomDao;
             _bomComponentDao = bomComponentDao;
+            _productDao = productDao;
         }
         public IDataResult<BillOfMaterialsComponent> GetById(int id)
         {
@@ -28,6 +32,22 @@ namespace ZeusERP.Business.Concrete
         {
             var component = await _bomComponentDao.GetAsync(c => c.Id == id);
             return new SuccessDataResult<BillOfMaterialsComponent>(component);
+        }
+
+        public IDataResult<IList<BillOfMaterialsComponent>> GetListByOrderId(int orderId)
+        {
+            var bom = _bomDao.Get(bom => bom.Id == orderId);
+            var bomComps = _bomComponentDao.GetList(bomComp => bomComp.BomId == bom.Id);
+
+            return new SuccessDataResult<IList<BillOfMaterialsComponent>>(bomComps);
+        }
+
+        public async Task<IDataResult<IList<BillOfMaterialsComponent>>> GetListByOrderIdAsync(int orderId)
+        {
+            var bom = await _bomDao.GetAsync(bom => bom.Id == orderId);
+            var bomComps = await _bomComponentDao.GetListAsync(bomComp => bomComp.BomId == bom.Id);
+
+            return new SuccessDataResult<IList<BillOfMaterialsComponent>>(bomComps);
         }
 
         public IDataResult<IList<BillOfMaterialsComponent>> GetList()
@@ -43,13 +63,13 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<IList<BillOfMaterialsComponent>> GetListByBomId(int bomId)
         {
-            var components = _bomComponentDao.GetList(c => c.BoMId == bomId);
+            var components = _bomComponentDao.GetList(c => c.BomId == bomId);
             return new SuccessDataResult<IList<BillOfMaterialsComponent>>(components);
         }
 
         public async Task<IDataResult<IList<BillOfMaterialsComponent>>> GetListByBomIdAsync(int bomId)
         {
-            var components = await _bomComponentDao.GetListAsync(c => c.BoMId == bomId);
+            var components = await _bomComponentDao.GetListAsync(c => c.BomId == bomId);
             return new SuccessDataResult<IList<BillOfMaterialsComponent>>(components);
         }
 
@@ -91,20 +111,44 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<BomComponentDetailsDto> GetBomComponentDetailsDtoById(int bomComponentId)
         {
-            throw new NotImplementedException();
+            var bomComp = _bomComponentDao.Get(comp => comp.Id == bomComponentId);
+            var productInComp = _productDao.Get(p => p.Id == bomComp.ProductId);
+            var bom = _bomDao.Get(comp => comp.Id == bomComp.BomId);
+            var bomComponentDetailsDto = new BomComponentDetailsDto
+            {
+                BomComponentId = bomComp.Id,
+                BomId = bomComp.BomId,
+                BomReference = bom.Reference,
+                ProductId = bomComp.ProductId,
+                ProductName = productInComp.Name,
+            };
+
+            return new SuccessDataResult<BomComponentDetailsDto>(bomComponentDetailsDto);
         }
 
-        public Task<IDataResult<BomComponentDetailsDto>> GetBomComponentDetailsDtoByIdAsync(int bomComponentId)
+        public async Task<IDataResult<BomComponentDetailsDto>> GetBomComponentDetailsDtoByIdAsync(int bomComponentId)
+        {
+            var bomComp = await _bomComponentDao.GetAsync(comp => comp.Id == bomComponentId);
+            var productInComp = await _productDao.GetAsync(p => p.Id == bomComp.ProductId);
+            var bom = await _bomDao.GetAsync(comp => comp.Id == bomComp.BomId);
+            var bomComponentDetailsDto = new BomComponentDetailsDto
+            {
+                BomComponentId = bomComp.Id,
+                BomId = bomComp.BomId,
+                BomReference = bom.Reference,
+                ProductId = bomComp.ProductId,
+                ProductName = productInComp.Name,
+            };
+
+            return new SuccessDataResult<BomComponentDetailsDto>(bomComponentDetailsDto);
+        }
+
+        public IDataResult<IList<BomComponentDetailsDto>> GetBomComponentDetailsDtoByOrderId(int orderId)
         {
             throw new NotImplementedException();
         }
 
-        public IDataResult<IList<BomComponentListDto>> GetBomComponentListDto()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task<IDataResult<IList<BomComponentListDto>>> GetBomComponentListDtoAsync()
+        public Task<IDataResult<IList<BomComponentDetailsDto>>> GetBomComponentDetailsDtoByOrderIdAsync(int orderId)
         {
             throw new NotImplementedException();
         }
