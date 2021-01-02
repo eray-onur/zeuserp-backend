@@ -15,9 +15,11 @@ namespace ZeusERP.Business.Concrete
     public class BomManager : IBomService
     {
         private IBomDao _bomDao;
-        public BomManager(IBomDao bomDao)
+        private IProductDao _productDao;
+        public BomManager(IBomDao bomDao, IProductDao productDao)
         {
             _bomDao = bomDao;
+            _productDao = productDao;
         }
         public IDataResult<BillOfMaterials> GetById(int id)
         {
@@ -79,22 +81,86 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<BomDetailsDto> GetBomDetailsDtoById(int bomId)
         {
-            throw new NotImplementedException();
+            var bom = _bomDao.Get(b => b.Id == bomId);
+            var productOfBom = _productDao.Get(p => p.Id == bom.ProductId);
+
+            var bomDetailsDto = new BomDetailsDto
+            {
+                BomId = bom.Id,
+                ProductId = bom.ProductId,
+                ProductName = productOfBom.Name,
+                BomReference = bom.Reference,
+                BomType = bom.BoMType,
+                Quantity = bom.Quantity
+            };
+
+            return new SuccessDataResult<BomDetailsDto>(bomDetailsDto);
         }
 
-        public Task<IDataResult<BomDetailsDto>> GetBomDetailsDtoByIdAsync(int bomId)
+        public async Task<IDataResult<BomDetailsDto>> GetBomDetailsDtoByIdAsync(int bomId)
         {
-            throw new NotImplementedException();
+            var bom = await _bomDao.GetAsync(b => b.Id == bomId);
+            var productOfBom = await _productDao.GetAsync(p => p.Id == bom.ProductId);
+
+            var bomDetailsDto = new BomDetailsDto
+            {
+                BomId = bom.Id,
+                ProductId = bom.ProductId,
+                ProductName = productOfBom.Name,
+                BomReference = bom.Reference,
+                BomType = bom.BoMType,
+                Quantity = bom.Quantity
+            };
+
+            return new SuccessDataResult<BomDetailsDto>(bomDetailsDto);
         }
 
         public IDataResult<IList<BomListDto>> GetBomListDto()
         {
-            throw new NotImplementedException();
+            var boms = _bomDao.GetList();
+            List<Product> products = _productDao.GetList() as List<Product>;
+            List<BomListDto> bomListDtos = new List<BomListDto>();
+
+            foreach(BillOfMaterials bom in boms)
+            {
+                BomListDto bomListDtoToAdd = new BomListDto
+                {
+                    BomId = bom.Id,
+                    ProductId = bom.ProductId,
+                    ProductName = products.Find(p => p.Id == bom.ProductId).Name,
+                    BomReference = bom.Reference,
+                    BomType = bom.BoMType,
+                    Quantity = bom.Quantity
+                };
+
+                bomListDtos.Add(bomListDtoToAdd);
+            }
+
+            return new SuccessDataResult<IList<BomListDto>>(bomListDtos);
         }
 
-        public Task<IDataResult<IList<BomListDto>>> GetBomListDtoAsync()
+        public async Task<IDataResult<IList<BomListDto>>> GetBomListDtoAsync()
         {
-            throw new NotImplementedException();
+            var boms = await _bomDao.GetListAsync();
+            List<Product> products = await _productDao.GetListAsync() as List<Product>;
+            List<BomListDto> bomListDtos = new List<BomListDto>();
+
+            foreach (BillOfMaterials bom in boms)
+            {
+                BomListDto bomListDtoToAdd = new BomListDto
+                {
+                    BomId = bom.Id,
+                    ProductId = bom.ProductId,
+                    ProductName = products.Find(p => p.Id == bom.ProductId).Name,
+                    BomReference = bom.Reference,
+                    BomType = bom.BoMType,
+                    Quantity = bom.Quantity
+                };
+
+                bomListDtos.Add(bomListDtoToAdd);
+            }
+
+            return new SuccessDataResult<IList<BomListDto>>(bomListDtos);
         }
     }
 }

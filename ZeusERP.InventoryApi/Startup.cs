@@ -18,6 +18,8 @@ using ZeusERP.DataAccess.Abstract;
 using ZeusERP.DataAccess.Concrete;
 using ZeusERP.Business.Concrete;
 using ZeusERP.Business.Abstract;
+using ZeusERP.Entities.Concrete;
+using Microsoft.AspNetCore.Identity;
 
 namespace ZeusERP.InventoryApi
 {
@@ -43,7 +45,14 @@ namespace ZeusERP.InventoryApi
             );
             services.AddControllers();
             services.AddDbContext<ZeusContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SaffetDB")));
+            
+            services.AddDbContext<IdentityContext>(options => options.UseSqlServer(Configuration.GetConnectionString("SaffetDB")));
+            services.AddIdentity<SysUser, SysUserRole>()
+                .AddEntityFrameworkStores<IdentityContext>()
+                .AddDefaultTokenProviders();
 
+
+            //services.AddSession();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -58,6 +67,10 @@ namespace ZeusERP.InventoryApi
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
+            //app.UseAuthorization();
+            //app.UseSession();
 
             app.UseEndpoints(endpoints =>
             {

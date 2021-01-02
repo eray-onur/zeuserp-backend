@@ -89,6 +89,28 @@ namespace ZeusERP.InventoryApi.Controllers
             return BadRequest(JsonConvert.SerializeObject(result.Message));
         }
 
+        [HttpGet("GetListByOrderId/{id}")]
+        public IActionResult GetBomComponentsDtoByOrderId(int id)
+        {
+            var result = _bomCompService.GetBomComponentDetailsDtoByOrderId(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
+        }
+
+        [HttpGet("GetListByOrderIdAsync/{id}")]
+        public async Task<IActionResult> GetBomComponentsDtoByOrderIdAsync(int id)
+        {
+            var result = await _bomCompService.GetBomComponentDetailsDtoByOrderIdAsync(id);
+            if (result.Success)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(JsonConvert.SerializeObject(result.Message));
+        }
+
         [HttpPost("Add")]
         public IActionResult Add(BillOfMaterialsComponent bomComponent)
         {

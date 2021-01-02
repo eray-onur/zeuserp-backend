@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 using Newtonsoft.Json;
@@ -21,11 +23,16 @@ namespace ZeusERP.InventoryApi.Controllers
     {
         private ICategoryService _categoryService;
         private IProductService _productService;
-        public CategoriesController(ICategoryService categoryService, IProductService productService)
+
+        public CategoriesController(
+            ICategoryService categoryService,
+            IProductService productService
+            )
         {
             _categoryService = categoryService;
             _productService = productService;
         }
+
         [HttpGet("GetAll")]
         public IActionResult Categories()
         {

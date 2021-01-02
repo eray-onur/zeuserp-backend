@@ -10,7 +10,7 @@ using ZeusERP.DataAccess.Contexts;
 namespace ZeusERP.DataAccess.Migrations
 {
     [DbContext(typeof(ZeusContext))]
-    [Migration("20201222152648_PrealphaMigration")]
+    [Migration("20201222174952_PrealphaMigration")]
     partial class PrealphaMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

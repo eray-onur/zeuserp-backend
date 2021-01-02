@@ -5,19 +5,15 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Utilities\Formatting\**" />
-    <EmbeddedResource Remove="Utilities\Formatting\**" />
-    <None Remove="Utilities\Formatting\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.8.0" />
     <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="CrossCuttingConcerns\Logging\" />
     <Folder Include="CrossCuttingConcerns\Caching\" />
+    <Folder Include="Utilities\Formatting\Concrete\" />
   </ItemGroup>
 
 </Project>

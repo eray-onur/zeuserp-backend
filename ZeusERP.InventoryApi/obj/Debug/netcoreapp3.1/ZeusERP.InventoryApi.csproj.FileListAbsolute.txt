@@ -140,3 +140,8 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.pdb
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\obj\Debug\netcoreapp3.1\ZeusERP.InventoryApi.genruntimeconfig.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.InventoryApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

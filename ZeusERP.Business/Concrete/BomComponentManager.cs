@@ -145,12 +145,47 @@ namespace ZeusERP.Business.Concrete
 
         public IDataResult<IList<BomComponentDetailsDto>> GetBomComponentDetailsDtoByOrderId(int orderId)
         {
-            throw new NotImplementedException();
+            var bomCompDetailsDtos = new List<BomComponentDetailsDto>();
+            var bom = _bomDao.Get(b => b.Id == orderId);
+            var bomComps = _bomComponentDao.GetList(comp => comp.BomId == bom.Id);
+            var products = _productDao.GetList() as List<Product>;
+            foreach (BillOfMaterialsComponent bomComp in bomComps)
+            {
+                var product = products.Find(p => p.Id == bomComp.ProductId);
+                var bomCompDetailsDto = new BomComponentDetailsDto
+                {
+                    BomId = bom.Id,
+                    BomReference = bom.Reference,
+                    BomComponentId = bomComp.Id,
+                    ProductId = product.Id,
+                    ProductName = product.Name
+                };
+                bomCompDetailsDtos.Add(bomCompDetailsDto);
+            }
+            return new SuccessDataResult<IList<BomComponentDetailsDto>>(bomCompDetailsDtos);
         }
 
-        public Task<IDataResult<IList<BomComponentDetailsDto>>> GetBomComponentDetailsDtoByOrderIdAsync(int orderId)
+        public async Task<IDataResult<IList<BomComponentDetailsDto>>> GetBomComponentDetailsDtoByOrderIdAsync(int orderId)
         {
-            throw new NotImplementedException();
+            List<BomComponentDetailsDto> bomCompDetailsDtos = new List<BomComponentDetailsDto>();
+            var bom = await _bomDao.GetAsync(b => b.Id == orderId);
+            var bomComps = await _bomComponentDao.GetListAsync(comp => comp.BomId == bom.Id);
+            var products = await _productDao.GetListAsync() as  List<Product>;
+            foreach(BillOfMaterialsComponent bomComp in bomComps)
+            {
+                var product = products.Find(p => p.Id == bomComp.ProductId);
+                var bomCompDetailsDto = new BomComponentDetailsDto
+                {
+                    BomId = bom.Id,
+                    BomReference = bom.Reference,
+                    BomComponentId = bomComp.Id,
+                    ProductId = product.Id,
+                    ProductName = product.Name,
+                    Quantity = bomComp.Quantity
+                };
+                bomCompDetailsDtos.Add(bomCompDetailsDto);
+            }
+            return new SuccessDataResult<IList<BomComponentDetailsDto>>(bomCompDetailsDtos);
         }
     }
 }

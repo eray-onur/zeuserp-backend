@@ -13,7 +13,7 @@ namespace ZeusERP.Entities.Concrete.ComplexTypes
         public string BomReference { get; set; }
         public int ProductId { get; set; }
         public string ProductName { get; set; }
-        public BoMType? BomType { get; set; }
+        public BomType? BomType { get; set; }
         public decimal Quantity { get; set; }
         public IList<BillOfMaterialsComponent> BomComponents { get; set; }
     }

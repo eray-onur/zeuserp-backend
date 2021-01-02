@@ -23,3 +23,4 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.TestConsole\obj\Debug\netcoreapp3.1\
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.TestConsole\obj\Debug\netcoreapp3.1\ZeusERP.TestConsole.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.TestConsole\obj\Debug\netcoreapp3.1\ZeusERP.TestConsole.pdb
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.TestConsole\obj\Debug\netcoreapp3.1\ZeusERP.TestConsole.genruntimeconfig.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.TestConsole\obj\Debug\netcoreapp3.1\ZeusERP.TestConsole.csprojAssemblyReference.cache

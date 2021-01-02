@@ -68,3 +68,8 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreap
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.pdb
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\obj\Debug\netcoreapp3.1\ZeusERP.ManufacturingApi.genruntimeconfig.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.ManufacturingApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll

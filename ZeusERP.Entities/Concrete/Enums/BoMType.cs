@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ZeusERP.Entities.Concrete.Enums
 {
-    public enum BoMType : int
+    public enum BomType : int
     {
         ManufactureThisProduct = 0,
         Kit = 1,

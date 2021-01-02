@@ -69,3 +69,9 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\obj\Debug\netcoreapp3.1\Ze
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\obj\Debug\netcoreapp3.1\ZeusERP.MasterApi.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\obj\Debug\netcoreapp3.1\ZeusERP.MasterApi.pdb
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\obj\Debug\netcoreapp3.1\ZeusERP.MasterApi.genruntimeconfig.cache
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.MasterApi\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
