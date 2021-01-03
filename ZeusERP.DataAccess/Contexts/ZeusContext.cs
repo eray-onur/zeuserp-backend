@@ -37,6 +37,11 @@ namespace ZeusERP.DataAccess.Contexts
         
         public DbSet<Warehouse> Warehouses { get; set; }
         public DbSet<Route> Routes { get; set; }
+        // PLM
+
+        public DbSet<EngineeringChangeOrder> ECOS { get; set; }
+        public DbSet<ECOTag> ECOTags { get; set; }
+        public DbSet<ECOType> ECOTypes { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);

@@ -1,8 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "BVmQFnmrJ3TLw6wNl8vAQAjhQ1iqZj1T3ItOFq2+M7jVdU6ASRjIkmXrK6pwrcHYmetWV/lvIY+iuDAfj6Etiw==",
+  "dgSpecHash": "oKiIVMQKDMmv9/ODUnw25ytTPqy4cX5Tl/dzBG4bm85LMQaNE5NoMX6Vc0hNTJRAItYLfxm26GZEIwxAJlL2AQ==",
   "success": true,
   "projectFilePath": "C:\\Projects\\ZeusERP\\ZeusERP.Backend\\ZeusERP.PLMApi\\ZeusERP.PLMApi.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.app\\2.1.0\\microsoft.netcore.app.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.dotnetapphost\\2.1.0\\microsoft.netcore.dotnetapphost.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.dotnethostpolicy\\2.1.0\\microsoft.netcore.dotnethostpolicy.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.dotnethostresolver\\2.1.0\\microsoft.netcore.dotnethostresolver.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.platforms\\2.1.0\\microsoft.netcore.platforms.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\microsoft.netcore.targets\\2.1.0\\microsoft.netcore.targets.2.1.0.nupkg.sha512",
+    "C:\\Users\\eonur\\.nuget\\packages\\netstandard.library\\2.0.3\\netstandard.library.2.0.3.nupkg.sha512"
+  ],
   "logs": []
 }

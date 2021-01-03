@@ -6,7 +6,6 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\bin\Debug\netcoreapp3.1\ZeusE
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\bin\Debug\netcoreapp3.1\ZeusERP.PLMApi.runtimeconfig.dev.json
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\bin\Debug\netcoreapp3.1\ZeusERP.PLMApi.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\bin\Debug\netcoreapp3.1\ZeusERP.PLMApi.pdb
-C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\obj\Debug\netcoreapp3.1\ZeusERP.PLMApi.csprojAssemblyReference.cache
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\obj\Debug\netcoreapp3.1\ZeusERP.PLMApi.AssemblyInfoInputs.cache
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\obj\Debug\netcoreapp3.1\ZeusERP.PLMApi.AssemblyInfo.cs
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.PLMApi\obj\Debug\netcoreapp3.1\ZeusERP.PLMApi.csproj.CoreCompileInputs.cache

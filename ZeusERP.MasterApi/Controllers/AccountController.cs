@@ -47,30 +47,36 @@ namespace ZeusERP.MasterApi.Controllers
         }
 
         [HttpPost("Login")]
-        public IActionResult Login([FromBody] dynamic content)
+        public IActionResult Login([FromBody] LoginDto content)
         {
-            var json = JsonConvert.DeserializeObject<JObject>(content.ToString());
-            Console.WriteLine(json);
 
-            string username = json.GetValue("username").ToString();
-            string pw = json.GetValue("password").ToString();
-            bool remember = bool.Parse(json.GetValue("remember").ToString());
-            SignInResult result = _signinManager.PasswordSignInAsync(username, pw, remember, false).Result;
+            SignInResult result = _signinManager.PasswordSignInAsync(content.Username, content.Password, content.Remember, false).Result;
             if(result.Succeeded)
             {
-                var tokenString = GenerateJSONWebToken(new SysUser { UserName = username });
+                var tokenString = GenerateJSONWebToken(new SysUser { UserName = content.Username });
 
                 return Ok(new { token = tokenString });
             }
             return Forbid(JsonConvert.SerializeObject("Unapproved!"));
         }
 
+        [HttpPost("ForgotPassword")]
+        public async Task<IActionResult> ForgotPassword([FromBody] ForgotPasswordDto content)
+        {
+            var user = await _userManager.FindByNameAsync(content.Username);
+            var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+            var result = await _userManager.ResetPasswordAsync(user, token, content.Password);
+
+            if(result.Succeeded)
+            {
+                return Ok(new { message = "Success!", success = true });
+            }
+            return BadRequest(new { message = "Failure", success = false });
+        }
+
         [HttpPost("Register")]
         public IActionResult Register([FromBody] RegisterDto content)
         {
-            //var json = JsonConvert.DeserializeObject<JObject>(content);
-            //string username = json.GetValue("username").ToString();
-            //string pw = json.GetValue("password").ToString();
 
             var user = new SysUser
             {
@@ -87,8 +93,9 @@ namespace ZeusERP.MasterApi.Controllers
                     };
 
                     IdentityResult roleResult = _roleManager.CreateAsync(role).Result;
+                    var addToRoleResult = _userManager.AddToRoleAsync(user, "Admin").Result;
 
-                    if(!roleResult.Succeeded)
+                    if(!addToRoleResult.Succeeded)
                     {
                         return BadRequest(JsonConvert.SerializeObject("Role cannot be created!"));
                     }
@@ -96,7 +103,7 @@ namespace ZeusERP.MasterApi.Controllers
 
                 return Ok(JsonConvert.SerializeObject("User was created successfully!"));
             }
-            return Ok(JsonConvert.SerializeObject("allah"));
+            return BadRequest(JsonConvert.SerializeObject("There was a problem with user generation."));
         }
 
         private string GenerateJSONWebToken(SysUser user)
@@ -111,6 +118,19 @@ namespace ZeusERP.MasterApi.Controllers
               signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        [HttpGet("GetAllUsers")]
+        public IActionResult GetAllUsers()
+        {
+            var users = _userManager.Users;
+            return Ok(JsonConvert.SerializeObject(users));
+        }
+        [HttpGet("CheckRoleByUsername")]
+        public async Task<IActionResult> CheckRoleByUsername(string username)
+        {
+            var user = await _userManager.FindByNameAsync(username);
+            bool isInRole = await _userManager.IsInRoleAsync(user, "Admin");
+            return Ok(isInRole.ToString());
         }
     }
 }

@@ -15,3 +15,4 @@ C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.csproj.CoreCompileInputs.cache
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.dll
 C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.pdb
+C:\Projects\ZeusERP\ZeusERP.Backend\ZeusERP.Core\obj\Debug\netcoreapp3.1\ZeusERP.Core.csprojAssemblyReference.cache

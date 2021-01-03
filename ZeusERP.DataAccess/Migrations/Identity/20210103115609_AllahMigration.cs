@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ZeusERP.DataAccess.Migrations.Identity
 {
-    public partial class identity : Migration
+    public partial class AllahMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

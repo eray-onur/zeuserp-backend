@@ -44,7 +44,7 @@ namespace ZeusERP.DataAccess.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("BoMType")
+                    b.Property<int>("BoMType")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductId")
@@ -198,6 +198,84 @@ namespace ZeusERP.DataAccess.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("t_inv_orders_delivery_ops");
+                });
+
+            modelBuilder.Entity("ZeusERP.Entities.Concrete.ECOTag", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ColorCode")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_plm_eco_tags");
+                });
+
+            modelBuilder.Entity("ZeusERP.Entities.Concrete.ECOType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("EmailAlias")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_plm_eco_types");
+                });
+
+            modelBuilder.Entity("ZeusERP.Entities.Concrete.EngineeringChangeOrder", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("ApplyOn")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("ApproverId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ECOTagsId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EcoStage")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Effectivity")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("EffectivityDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Note")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ResponsibleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Summary")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("t_plm_ecos");
                 });
 
             modelBuilder.Entity("ZeusERP.Entities.Concrete.Location", b =>

@@ -10,8 +10,8 @@ using ZeusERP.DataAccess.Contexts;
 namespace ZeusERP.DataAccess.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20201226124617_identity")]
-    partial class identity
+    [Migration("20210103115609_AllahMigration")]
+    partial class AllahMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
